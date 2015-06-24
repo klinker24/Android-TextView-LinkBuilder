@@ -56,15 +56,19 @@ link.setOnClickListener(new Link.OnClickListener() {
     	// single clicked
     }
 });
+
+// create the link builder object add the link rule
+LinkBuilder builder = new LinkBuilder(textView);
+builder.addLink(link);
+
+// create the clickable links
+builder.build();
 ```
 
 ## Contributing
 
 Please fork this repository and contribute back using [pull requests](https://github.com/klinker24/Android-TextView-LinkBuilder/pulls). Features can be requested using [issues](https://github.com/klinker24/Android-TextView-LinkBuilder/issues). All code, comments, and critiques are greatly appreciated.
 
-
-
----
 
 ## License
 
