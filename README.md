@@ -26,7 +26,7 @@ There are two ways to use this library:
 This is the preferred way. Simply add:
 
 ```groovy
-compile 'com.klinkerapps:link_builder:+@aar'
+compile 'com.klinkerapps:link_builder:1.0.1-SNAPSHOT@aar'
 ```
 
 to your project dependencies and run `gradle build` or `gradle assemble`.
@@ -36,6 +36,8 @@ to your project dependencies and run `gradle build` or `gradle assemble`.
 Download the source code and import it as a library project in Eclipse. The project is available in the folder **library**. For more information on how to do this, read [here](http://developer.android.com/tools/projects/index.html#LibraryProjects).
 
 ## Example Usage
+
+Functionality can be found in the example's [MainActivity](https://github.com/klinker24/Android-TextView-LinkBuilder/blob/master/example/src/main/java/com/klinker/android/link_builder_example/MainActivity.java)
 
 ```java
 // Create the link rule to set what text should be linked.
