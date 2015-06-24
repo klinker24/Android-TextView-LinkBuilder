@@ -22,6 +22,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.klinker.android.link_builder.Link;
+import com.klinker.android.link_builder.LinkBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;

@@ -12,7 +12,7 @@
     limitations under the License.
  */
 
-package com.klinker.android.link_builder_example;
+package com.klinker.android.link_builder;
 
 import android.graphics.Color;
 import android.os.Handler;
