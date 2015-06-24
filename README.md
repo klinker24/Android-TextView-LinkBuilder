@@ -17,6 +17,8 @@ Similar to how all the big players do it (Google+, Twitter, *cough* Talon *cough
  - Modify the transparency of the text's highlighting when the user touches it
  - Set whether or not you want the text underlined
 
+The main advantage to using this library over TextView's autolink functionality is that you can link anything, not just web address, emails, and phone numbers. It also provides color customization and touch feedback.
+
 ## Installation
 
 There are two ways to use this library:
@@ -66,6 +68,12 @@ builder.addLink(link);
 // create the clickable links
 builder.build();
 ```
+
+NOTE: There is a build in vibrate on the long clicks. To enable this, you need to add a permission though.
+
+'''
+<uses-permission android:name="android.permission.VIBRATE"/>
+'''
 
 ## Contributing
 
