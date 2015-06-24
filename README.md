@@ -71,9 +71,9 @@ builder.build();
 
 NOTE: There is a build in vibrate on the long clicks. To enable this, you need to add a permission though.
 
-'''
+```xml
 <uses-permission android:name="android.permission.VIBRATE"/>
-'''
+```
 
 ## Contributing
 
