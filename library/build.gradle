@@ -24,10 +24,14 @@ android {
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     provided 'org.projectlombok:lombok:1.14.2'
 }
 
-apply from: 'https://raw.github.com/klinker41/gradle-mvn-push/master/gradle-mvn-push.gradle'
+apply from: 'https://raw.github.com/klinker24/gradle-mvn-push/master/gradle-mvn-push.gradle'

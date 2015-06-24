@@ -18,21 +18,19 @@ import android.graphics.Color;
 
 import java.util.regex.Pattern;
 
-import lombok.Getter;
-
 public class Link {
 
     private static final int DEFAULT_COLOR = Color.parseColor("#33B5E5");
     private static final float DEFAULT_ALPHA = .20f;
 
-    @Getter private String text;
-    @Getter private Pattern pattern;
-    @Getter private int textColor = DEFAULT_COLOR;
-    @Getter private float highlightAlpha = DEFAULT_ALPHA;
-    @Getter private boolean underlined = true;
+    private String text;
+    private Pattern pattern;
+    private int textColor = DEFAULT_COLOR;
+    private float highlightAlpha = DEFAULT_ALPHA;
+    private boolean underlined = true;
 
-    @Getter private OnClickListener clickListener;
-    @Getter private OnLongClickListener longClickListener;
+    private OnClickListener clickListener;
+    private OnLongClickListener longClickListener;
 
     /**
      * Copy Constructor.
@@ -135,6 +133,34 @@ public class Link {
     public Link setHighlightAlpha(float alpha) {
         this.highlightAlpha = alpha;
         return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public Pattern getPattern() {
+        return pattern;
+    }
+
+    public int getTextColor() {
+        return textColor;
+    }
+
+    public float getHighlightAlpha() {
+        return highlightAlpha;
+    }
+
+    public boolean isUnderlined() {
+        return underlined;
+    }
+
+    public OnClickListener getClickListener() {
+        return clickListener;
+    }
+
+    public OnLongClickListener getLongClickListener() {
+        return longClickListener;
     }
 
     /**
