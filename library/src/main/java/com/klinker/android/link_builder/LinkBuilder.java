@@ -41,6 +41,9 @@ public class LinkBuilder {
      * @param textView The TextView you will be adding links to.
      */
     public LinkBuilder(TextView textView) {
+        if (textView == null) {
+            throw new IllegalArgumentException("textView is null");
+        }
         this.textView = textView;
     }
 
@@ -48,16 +51,27 @@ public class LinkBuilder {
      * Add a single link to the builder.
      * @param link the rule that you want to link with.
      */
-    public void addLink(Link link) {
+    public LinkBuilder addLink(Link link) {
+        if (link == null) {
+            throw new IllegalArgumentException("link is null");
+        }
         this.links.add(link);
+        return this;
     }
 
     /**
      * Add a list of links to the builder.
      * @param links list of rules you want to link with.
      */
-    public void addLinks(List<Link> links) {
+    public LinkBuilder addLinks(List<Link> links) {
+        if (links == null) {
+            throw new IllegalArgumentException("link list is null");
+        }
+        if (links.isEmpty()) {
+            throw new IllegalArgumentException("link list is empty");
+        }
         this.links.addAll(links);
+        return this;
     }
 
     /**
