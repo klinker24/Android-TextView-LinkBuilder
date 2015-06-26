@@ -45,12 +45,10 @@ public class MainActivity extends Activity {
         // find the text view. Used to create the link builder
         TextView demoText = (TextView) findViewById(R.id.test_text);
 
-        // Add the links
-        LinkBuilder builder = new LinkBuilder(demoText);
-        builder.addLinks(getExampleLinks());
-
-        // force the builder to display and make the links clickable
-        builder.build();
+        // Add the links and make the links clickable
+        new LinkBuilder(demoText)
+                .addLinks(getExampleLinks())
+                .build();
     }
 
     private List<Link> getExampleLinks() {
