@@ -69,12 +69,6 @@ builder.addLink(link);
 builder.build();
 ```
 
-NOTE: There is a build in vibrate on the long clicks. To enable this, you need to add a permission though.
-
-```xml
-<uses-permission android:name="android.permission.VIBRATE"/>
-```
-
 ## Contributing
 
 Please fork this repository and contribute back using [pull requests](https://github.com/klinker24/Android-TextView-LinkBuilder/pulls). Features can be requested using [issues](https://github.com/klinker24/Android-TextView-LinkBuilder/issues). All code, comments, and critiques are greatly appreciated.
