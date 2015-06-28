@@ -62,11 +62,9 @@ link.setOnClickListener(new Link.OnClickListener() {
 });
 
 // create the link builder object add the link rule
-LinkBuilder builder = new LinkBuilder(textView);
-builder.addLink(link);
-
-// create the clickable links
-builder.build();
+new LinkBuilder(textView)
+    .addLink(link)
+    .build(); // create the clickable links
 ```
 
 ## Contributing
