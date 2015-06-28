@@ -22,6 +22,7 @@ import android.text.Selection;
 import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
 import android.text.method.MovementMethod;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
@@ -41,37 +42,39 @@ public class TouchableMovementMethod extends LinkMovementMethod {
     public boolean onTouchEvent(final TextView textView, final Spannable spannable, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             mPressedSpan = getPressedSpan(textView, spannable, event);
+
             if (mPressedSpan != null) {
                 mPressedSpan.setTouched(true);
                 touched = true;
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         if (touched && mPressedSpan != null) {
-                            try {
-                                Vibrator v = (Vibrator) textView.getContext().getSystemService(Context.VIBRATOR_SERVICE);
-                                v.vibrate(25);
-                            } catch (SecurityException e) {
-                                e.printStackTrace();
-                                // would vibrate here with the correct permissions.
-                            }
+                            if (textView.isHapticFeedbackEnabled())
+                                textView.setHapticFeedbackEnabled(true);
+                            textView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
 
                             mPressedSpan.onLongClick(textView);
                             mPressedSpan.setTouched(false);
                             mPressedSpan = null;
+
                             Selection.removeSelection(spannable);
                         }
                     }
                 }, 500);
+
                 Selection.setSelection(spannable, spannable.getSpanStart(mPressedSpan),
                         spannable.getSpanEnd(mPressedSpan));
             }
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
             TouchableSpan touchedSpan = getPressedSpan(textView, spannable, event);
+
             if (mPressedSpan != null && touchedSpan != mPressedSpan) {
                 mPressedSpan.setTouched(false);
-                touched = false;
                 mPressedSpan = null;
+                touched = false;
+
                 Selection.removeSelection(spannable);
             }
         } else if(event.getAction() == MotionEvent.ACTION_UP) {
@@ -79,15 +82,19 @@ public class TouchableMovementMethod extends LinkMovementMethod {
                 mPressedSpan.onClick(textView);
                 mPressedSpan.setTouched(false);
                 mPressedSpan = null;
+
                 Selection.removeSelection(spannable);
             }
         } else {
             if (mPressedSpan != null) {
                 mPressedSpan.setTouched(false);
                 touched = false;
+
                 super.onTouchEvent(textView, spannable, event);
             }
+
             mPressedSpan = null;
+
             Selection.removeSelection(spannable);
         }
         return true;
