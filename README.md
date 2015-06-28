@@ -28,7 +28,7 @@ There are two ways to use this library:
 This is the preferred way. Simply add:
 
 ```groovy
-compile 'com.klinkerapps:link_builder:1.0.2-SNAPSHOT@aar'
+compile 'com.klinkerapps:link_builder:1.0.3-SNAPSHOT@aar'
 ```
 
 to your project dependencies and run `gradle build` or `gradle assemble`.
