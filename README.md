@@ -1,4 +1,4 @@
-# Android TextView-LinkBuilder
+# Android TextView-LinkBuilder [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TextView--LinkBuilder-green.svg?style=flat)](https://android-arsenal.com/details/1/2049)
 
 ![Screenshot](preview.png)
 
