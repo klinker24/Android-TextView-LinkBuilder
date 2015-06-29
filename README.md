@@ -28,7 +28,16 @@ There are two ways to use this library:
 This is the preferred way. Simply add:
 
 ```groovy
-compile 'com.klinkerapps:link_builder:1.0.3-SNAPSHOT@aar'
+// make sure you have added the snapshot repository
+repositories {
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+}
+
+dependencies {
+    compile 'com.klinkerapps:link_builder:1.0.3-SNAPSHOT@aar'
+}
 ```
 
 to your project dependencies and run `gradle build` or `gradle assemble`.
