@@ -53,22 +53,22 @@ Functionality can be found in the example's [MainActivity](https://github.com/kl
 ```java
 // Create the link rule to set what text should be linked.
 // can use a specific string or a regex pattern
-Link link = new Link("click here");
-link.setTextColor(Color.parseColor("#259B24"));   // optional, defaults to holo blue
-link.setHighlightAlpha(.4f); 					  // optional, defaults to .15f
-link.setUnderlined(false); 						  // optional, defaults to true
-link.setOnLongClickListener(new Link.OnLongClickListener() {
-    @Override
-    public void onLongClick(String clickedText) {
-    	// long clicked
-    }
-});
-link.setOnClickListener(new Link.OnClickListener() {
-    @Override
-    public void onClick(String clickedText) {
-    	// single clicked
-    }
-});
+Link link = new Link("click here")
+    .setTextColor(Color.parseColor("#259B24"))    // optional, defaults to holo blue
+    .setHighlightAlpha(.4f) 					  // optional, defaults to .15f
+    .setUnderlined(false) 						  // optional, defaults to true
+    .setOnLongClickListener(new Link.OnLongClickListener() {
+        @Override
+        public void onLongClick(String clickedText) {
+        	// long clicked
+        }
+    })
+    .setOnClickListener(new Link.OnClickListener() {
+        @Override
+        public void onClick(String clickedText) {
+        	// single clicked
+        }
+    });
 
 // create the link builder object add the link rule
 new LinkBuilder(textView)
