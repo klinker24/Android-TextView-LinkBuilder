@@ -78,13 +78,13 @@ public class LinkBuilder {
      * Execute the rules to create the linked text.
      */
     public void build() {
+        // we extract individual links from the patterns
+        turnPatternsToLinks();
+
         // exit if there are no links
         if (links.size() == 0) {
             return;
         }
-
-        // we extract individual links from the patterns
-        turnPatternsToLinks();
 
         // add those links to our spannable text so they can be clicked
         for (Link link : links) {
