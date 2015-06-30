@@ -42,6 +42,7 @@ public class Link {
         this.clickListener = link.getClickListener();
         this.longClickListener = link.getLongClickListener();
         this.textColor = link.getTextColor();
+        this.highlightAlpha = link.getHighlightAlpha();
         this.underlined = link.isUnderlined();
     }
 
