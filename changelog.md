@@ -1,6 +1,7 @@
 ## Changelog
 
 ### Version 1.0.4:
+- Add prepended and appended text to links
 - Fix: if no matches are found when linking regular expressions, the text would not be shown at all
 - Convert line endings from CRLF to LF for git repository
 - Add changelog

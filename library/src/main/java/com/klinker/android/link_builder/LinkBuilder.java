@@ -86,6 +86,10 @@ public class LinkBuilder {
             return;
         }
 
+        // we need to apply this text before the links are created
+        applyAppendedAndPrependedText();
+
+
         // add those links to our spannable text so they can be clicked
         for (Link link : links) {
             addLinkToSpan(link);
@@ -151,7 +155,7 @@ public class LinkBuilder {
      * @param range the start and end point of the link within the text.
      * @param text the spannable text to add the link to.
      */
-    private void applyLink(Link link, final Range range, final Spannable text) {
+    private void applyLink(Link link, Range range, Spannable text) {
         TouchableSpan span = new TouchableSpan(link);
         text.setSpan(span, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
@@ -172,6 +176,34 @@ public class LinkBuilder {
                 i++;
             }
         }
+    }
+
+    /**
+     * Add the appended and prepended text to the links and apply it to the TextView
+     * so that we can create the SpannableString.
+     */
+    private void applyAppendedAndPrependedText() {
+        String text = textView.getText().toString();
+
+        for (int i = 0; i < links.size(); i++) {
+            Link link = links.get(i);
+
+            if (link.getPrependedText() != null) {
+                String totalText = link.getPrependedText() + " " + link.getText();
+
+                text = text.replace(link.getText(), totalText);
+                links.get(i).setText(totalText);
+            }
+
+            if (link.getAppendedText() != null) {
+                String totalText = link.getText() + " " + link.getAppendedText();
+
+                text = text.replace(link.getText(), totalText);
+                links.get(i).setText(totalText);
+            }
+        }
+
+        textView.setText(text);
     }
 
     /**

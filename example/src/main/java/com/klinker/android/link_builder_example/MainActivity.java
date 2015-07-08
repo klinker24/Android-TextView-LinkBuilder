@@ -104,6 +104,13 @@ public class MainActivity extends Activity {
         no.setUnderlined(false);
         no.setTextColor(Color.parseColor("#FFEB3B"));
 
+        // prepended text
+        Link prepend = new Link("prepended");
+        prepend.setPrependedText("(!)");
+
+        Link appended = new Link("appended");
+        appended.setAppendedText("(!)");
+
         // link to our play store page
         Link playStore = new Link("Play Store");
         playStore.setTextColor(Color.parseColor("#FF9800"));
@@ -122,6 +129,8 @@ public class MainActivity extends Activity {
         links.add(longClickHere);
         links.add(yes);
         links.add(no);
+        links.add(prepend);
+        links.add(appended);
         links.add(playStore);
 
         return links;
