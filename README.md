@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.klinkerapps:link_builder:1.0.3-SNAPSHOT@aar'
+    compile 'com.klinkerapps:link_builder:1.0.4-SNAPSHOT@aar'
 }
 ```
 
@@ -79,6 +79,10 @@ new LinkBuilder(textView)
 ## Contributing
 
 Please fork this repository and contribute back using [pull requests](https://github.com/klinker24/Android-TextView-LinkBuilder/pulls). Features can be requested using [issues](https://github.com/klinker24/Android-TextView-LinkBuilder/issues). All code, comments, and critiques are greatly appreciated.
+
+## Changelog
+
+The full changelog for the library can be found [here](https://github.com/klinker24/Android-TextView-LinkBuilder/blob/master/changelog.md).
 
 
 ## License
