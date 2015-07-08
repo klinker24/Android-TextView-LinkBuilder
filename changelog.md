@@ -2,6 +2,7 @@
 
 ### Version 1.0.4:
 - Fix: if no matches are found when linking regular expressions, the text would not be shown at all
+- Convert line endings from CRLF to LF for git repository
 - Add changelog
 - Add release tags 
 
