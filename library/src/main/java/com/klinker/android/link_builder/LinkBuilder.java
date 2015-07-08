@@ -18,7 +18,6 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.MovementMethod;
-import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -38,6 +37,7 @@ public class LinkBuilder {
 
     /**
      * Construct a LinkBuilder object.
+     *
      * @param textView The TextView you will be adding links to.
      */
     public LinkBuilder(TextView textView) {
@@ -49,6 +49,7 @@ public class LinkBuilder {
 
     /**
      * Add a single link to the builder.
+     *
      * @param link the rule that you want to link with.
      */
     public LinkBuilder addLink(Link link) {
@@ -61,6 +62,7 @@ public class LinkBuilder {
 
     /**
      * Add a list of links to the builder.
+     *
      * @param links list of rules you want to link with.
      */
     public LinkBuilder addLinks(List<Link> links) {
@@ -104,6 +106,7 @@ public class LinkBuilder {
 
     /**
      * Add the link rule and check if spannable text is created.
+     *
      * @param link rule to add to the text.
      */
     private void addLinkToSpan(Link link) {
@@ -118,22 +121,30 @@ public class LinkBuilder {
 
     /**
      * Find the link within the spannable text
-     * @param s spannable text that we are adding the rule to.
+     *
+     * @param s    spannable text that we are adding the rule to.
      * @param link rule to add to the text.
      */
     private void addLinkToSpan(Spannable s, Link link) {
         // get the current text
         String text = textView.getText().toString();
+        Pattern pattern = Pattern.compile(Pattern.quote(link.getText()));
+        Matcher matcher = pattern.matcher(text);
 
-        // find the start and end point of the linked text within the TextView
-        int start = text.indexOf(link.getText());
-        if (start >= 0) {
-            int end = start + link.getText().length();
+        // find one or more links inside the text
+        while (matcher.find()) {
 
-            // add link to the spannable text
-            applyLink(link, new Range(start, end), s);
+            // find the start and end point of the linked text within the TextView
+            int start = matcher.start();
+
+            //int start = text.indexOf(link.getText());
+            if (start >= 0) {
+                int end = start + link.getText().length();
+
+                // add link to the spannable text
+                applyLink(link, new Range(start, end), s);
+            }
         }
-
     }
 
     /**
@@ -151,9 +162,10 @@ public class LinkBuilder {
 
     /**
      * Set the link rule to the spannable text.
-     * @param link rule we are applying.
+     *
+     * @param link  rule we are applying.
      * @param range the start and end point of the link within the text.
-     * @param text the spannable text to add the link to.
+     * @param text  the spannable text to add the link to.
      */
     private void applyLink(Link link, Range range, Spannable text) {
         TouchableSpan span = new TouchableSpan(link);
@@ -208,6 +220,7 @@ public class LinkBuilder {
 
     /**
      * Convert the pattern to individual links.
+     *
      * @param linkWithPattern pattern we want to match.
      */
     private void addLinksFromPattern(Link linkWithPattern) {
