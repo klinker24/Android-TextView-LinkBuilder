@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.0.5:
+- If the link contained the last character of the line, clicking the empty space at the end of the line would also click the link. This removes that bug.
+
 ### Version 1.0.4:
 - Add prepended and appended text to links
 - Fix: if no matches are found when linking regular expressions, the text would not be shown at all
