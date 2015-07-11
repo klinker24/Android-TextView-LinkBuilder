@@ -70,6 +70,11 @@ public class LinkBuilder {
         if (links.isEmpty()) {
             throw new IllegalArgumentException("link list is empty");
         }
+        for (Link link : links) {
+            if (link == null) {
+                throw new IllegalArgumentException("At least one link is null");
+            }
+        }
         this.links.addAll(links);
         return this;
     }
