@@ -16,6 +16,7 @@ Similar to how all the big players do it (Google+, Twitter, *cough* Talon *cough
  - Change the color of the linked text
  - Modify the transparency of the text's highlighting when the user touches it
  - Set whether or not you want the text underlined
+ - Default link color from an activity theme
 
 The main advantage to using this library over TextView's autolink functionality is that you can link anything, not just web address, emails, and phone numbers. It also provides color customization and touch feedback.
 
@@ -74,6 +75,17 @@ Link link = new Link("click here")
 new LinkBuilder(textView)
     .addLink(link)
     .build(); // create the clickable links
+```
+
+If you would like to set the default text color for links without inputting it manually on each Link object, it can be set from the activity theme.
+
+```xml
+<style name="LinkBuilderExampleTheme" parent="android:Theme.Holo.Light">
+    <item name="linkBuilderStyle">@style/LinkBuilder</item>
+</style>
+<style name="LinkBuilder">
+    <item name="defaultLinkColor">#222222</item>
+</style>
 ```
 
 ## Contributing

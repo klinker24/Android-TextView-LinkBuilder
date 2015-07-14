@@ -20,14 +20,14 @@ import java.util.regex.Pattern;
 
 public class Link {
 
-    private static final int DEFAULT_COLOR = Color.parseColor("#33B5E5");
+    public static final int DEFAULT_COLOR = Color.parseColor("#33B5E5");
     private static final float DEFAULT_ALPHA = .20f;
 
     private String text;
     private String prependedText;
     private String appendedText;
     private Pattern pattern;
-    private int textColor = DEFAULT_COLOR;
+    private int textColor = 0;
     private float highlightAlpha = DEFAULT_ALPHA;
     private boolean underlined = true;
 

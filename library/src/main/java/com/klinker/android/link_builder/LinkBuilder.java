@@ -35,6 +35,8 @@ public class LinkBuilder {
 
     private SpannableString spannable = null;
 
+    private int defaultColor;
+
     /**
      * Construct a LinkBuilder object.
      *
@@ -45,6 +47,8 @@ public class LinkBuilder {
             throw new IllegalArgumentException("textView is null");
         }
         this.textView = textView;
+
+
     }
 
     /**
@@ -173,7 +177,7 @@ public class LinkBuilder {
      * @param text  the spannable text to add the link to.
      */
     private void applyLink(Link link, Range range, Spannable text) {
-        TouchableSpan span = new TouchableSpan(link);
+        TouchableSpan span = new TouchableSpan(textView.getContext(), link);
         text.setSpan(span, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 

@@ -18,12 +18,18 @@
       package="com.klinker.android.link_builder_example" >
 
     <application android:label="@string/app_name" android:icon="@drawable/icon" >
-        <activity android:name="com.klinker.android.link_builder_example.MainActivity" android:label="@string/app_name">
+
+        <activity android:name="com.klinker.android.link_builder_example.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/LinkBuilderExampleTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
     </application>
+
 </manifest> 

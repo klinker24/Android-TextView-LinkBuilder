@@ -1,6 +1,7 @@
 ## Changelog
 
 ### Version 1.0.6:
+- Allow for styling the default color of the links from activity theme
 - Don't allow null links when building the SpannableString
 - Find all links of the same text when using a regular expression
 
