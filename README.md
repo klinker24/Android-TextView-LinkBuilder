@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.klinkerapps:link_builder:1.0.5-SNAPSHOT@aar'
+    compile 'com.klinkerapps:link_builder:1.0.6-SNAPSHOT@aar'
 }
 ```
 
