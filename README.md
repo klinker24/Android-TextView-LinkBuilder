@@ -73,10 +73,29 @@ Link link = new Link("click here")
         }
     });
 
+TextView demoText = (TextView) findViewById(R.id.test_text);
+
 // create the link builder object add the link rule
-new LinkBuilder(textView)
+LinkBuilder.on(demoText)
     .addLink(link)
     .build(); // create the clickable links
+```
+
+With version 1.1.0, you can create a CharSequence from a String instead of creating and applying the links directly to the TextView. Do not forget to set the movement method on your TextView's after you have applied the CharSequence, or else the links will not be clickable.
+
+```java
+// find the text view. Used to create the link builder
+TextView demoText = (TextView) findViewById(R.id.test_text);
+
+// Add the links and make the links clickable
+CharSequence sequence = LinkBuilder.from(this, demoText.getText().toString())
+    .addLinks(getExampleLinks())
+    .build();
+
+demoText.setText(sequence);
+
+// if you forget to set the movement method, then your text will not be clickable!
+demoText.setMovementMethod(TouchableMovementMethod.getInstance());
 ```
 
 If you would like to set the default text color for links without inputting it manually on each Link object, it can be set from the activity theme.

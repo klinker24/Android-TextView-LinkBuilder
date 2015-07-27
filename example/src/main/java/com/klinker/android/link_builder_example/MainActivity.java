@@ -19,11 +19,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.klinker.android.link_builder.Link;
 import com.klinker.android.link_builder.LinkBuilder;
+import com.klinker.android.link_builder.TouchableMovementMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class MainActivity extends Activity {
         TextView demoText = (TextView) findViewById(R.id.test_text);
 
         // Add the links and make the links clickable
-        new LinkBuilder(demoText)
+        LinkBuilder.on(demoText)
                 .addLinks(getExampleLinks())
                 .build();
     }
