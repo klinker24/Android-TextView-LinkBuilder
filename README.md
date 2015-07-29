@@ -29,15 +29,8 @@ There are two ways to use this library:
 This is the preferred way. Simply add:
 
 ```groovy
-// make sure you have added the snapshot repository
-repositories {
-    maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots/'
-    }
-}
-
 dependencies {
-    compile 'com.klinkerapps:link_builder:1.1.0-SNAPSHOT@aar'
+    compile 'com.klinkerapps:link_builder:1.1.0@aar'
 }
 ```
 
