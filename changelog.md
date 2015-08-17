@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.2.0:
+- Add a set typeface method to Link
+
 ### Version 1.1.0:
 - Cut to LinkBuilder.from(String) and LinkBuilder.on(TextView) to create an instance of LinkBuilder
 - Allow LinkBuilder to return a CharSequence for the links without setting them to a TextView automatically. (Use LinkBuilder.from(String).build())
