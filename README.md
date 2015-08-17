@@ -1,4 +1,4 @@
-# Android TextView-LinkBuilder
+# Android TextView-LinkBuilder [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TextView--LinkBuilder-green.svg?style=flat)](https://android-arsenal.com/details/1/2049)
 
 ![Screenshot](preview.png)
 
@@ -16,6 +16,7 @@ Similar to how all the big players do it (Google+, Twitter, *cough* Talon *cough
  - Change the color of the linked text
  - Modify the transparency of the text's highlighting when the user touches it
  - Set whether or not you want the text underlined
+ - Default link color from an activity theme
 
 The main advantage to using this library over TextView's autolink functionality is that you can link anything, not just web address, emails, and phone numbers. It also provides color customization and touch feedback.
 
@@ -28,7 +29,9 @@ There are two ways to use this library:
 This is the preferred way. Simply add:
 
 ```groovy
-compile 'com.klinkerapps:link_builder:1.0.2-SNAPSHOT@aar'
+dependencies {
+    compile 'com.klinkerapps:link_builder:1.1.0@aar'
+}
 ```
 
 to your project dependencies and run `gradle build` or `gradle assemble`.
@@ -41,43 +44,71 @@ Download the source code and import it as a library project in Eclipse. The proj
 
 Functionality can be found in the example's [MainActivity](https://github.com/klinker24/Android-TextView-LinkBuilder/blob/master/example/src/main/java/com/klinker/android/link_builder_example/MainActivity.java)
 
+For a list of regular expressions that I use in Talon, you can go [here](https://github.com/klinker24/Talon-for-Twitter/blob/master/src/main/java/com/klinker/android/twitter/utils/text/Regex.java)
+
 ```java
 // Create the link rule to set what text should be linked.
 // can use a specific string or a regex pattern
-Link link = new Link("click here");
-link.setTextColor(Color.parseColor("#259B24"));   // optional, defaults to holo blue
-link.setHighlightAlpha(.4f); 					  // optional, defaults to .15f
-link.setUnderlined(false); 						  // optional, defaults to true
-link.setOnLongClickListener(new Link.OnLongClickListener() {
-    @Override
-    public void onLongClick(String clickedText) {
-    	// long clicked
-    }
-});
-link.setOnClickListener(new Link.OnClickListener() {
-    @Override
-    public void onClick(String clickedText) {
-    	// single clicked
-    }
-});
+Link link = new Link("click here")
+    .setTextColor(Color.parseColor("#259B24"))    // optional, defaults to holo blue
+    .setHighlightAlpha(.4f) 					  // optional, defaults to .15f
+    .setUnderlined(false) 						  // optional, defaults to true
+    .setOnLongClickListener(new Link.OnLongClickListener() {
+        @Override
+        public void onLongClick(String clickedText) {
+        	// long clicked
+        }
+    })
+    .setOnClickListener(new Link.OnClickListener() {
+        @Override
+        public void onClick(String clickedText) {
+        	// single clicked
+        }
+    });
+
+TextView demoText = (TextView) findViewById(R.id.test_text);
 
 // create the link builder object add the link rule
-LinkBuilder builder = new LinkBuilder(textView);
-builder.addLink(link);
-
-// create the clickable links
-builder.build();
+LinkBuilder.on(demoText)
+    .addLink(link)
+    .build(); // create the clickable links
 ```
 
-NOTE: There is a build in vibrate on the long clicks. To enable this, you need to add a permission though.
+With version 1.1.0, you can create a CharSequence from a String instead of creating and applying the links directly to the TextView. Do not forget to set the movement method on your TextView's after you have applied the CharSequence, or else the links will not be clickable.
+
+```java
+// find the text view. Used to create the link builder
+TextView demoText = (TextView) findViewById(R.id.test_text);
+
+// Add the links and make the links clickable
+CharSequence sequence = LinkBuilder.from(this, demoText.getText().toString())
+    .addLinks(getExampleLinks())
+    .build();
+
+demoText.setText(sequence);
+
+// if you forget to set the movement method, then your text will not be clickable!
+demoText.setMovementMethod(TouchableMovementMethod.getInstance());
+```
+
+If you would like to set the default text color for links without inputting it manually on each Link object, it can be set from the activity theme.
 
 ```xml
-<uses-permission android:name="android.permission.VIBRATE"/>
+<style name="LinkBuilderExampleTheme" parent="android:Theme.Holo.Light">
+    <item name="linkBuilderStyle">@style/LinkBuilder</item>
+</style>
+<style name="LinkBuilder">
+    <item name="defaultLinkColor">#222222</item>
+</style>
 ```
 
 ## Contributing
 
 Please fork this repository and contribute back using [pull requests](https://github.com/klinker24/Android-TextView-LinkBuilder/pulls). Features can be requested using [issues](https://github.com/klinker24/Android-TextView-LinkBuilder/issues). All code, comments, and critiques are greatly appreciated.
+
+## Changelog
+
+The full changelog for the library can be found [here](https://github.com/klinker24/Android-TextView-LinkBuilder/blob/master/changelog.md).
 
 
 ## License

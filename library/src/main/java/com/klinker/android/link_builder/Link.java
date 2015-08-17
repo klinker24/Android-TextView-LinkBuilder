@@ -20,12 +20,14 @@ import java.util.regex.Pattern;
 
 public class Link {
 
-    private static final int DEFAULT_COLOR = Color.parseColor("#33B5E5");
+    public static final int DEFAULT_COLOR = Color.parseColor("#33B5E5");
     private static final float DEFAULT_ALPHA = .20f;
 
     private String text;
+    private String prependedText;
+    private String appendedText;
     private Pattern pattern;
-    private int textColor = DEFAULT_COLOR;
+    private int textColor = 0;
     private float highlightAlpha = DEFAULT_ALPHA;
     private boolean underlined = true;
 
@@ -38,10 +40,13 @@ public class Link {
      */
     public Link(Link link) {
         this.text = link.getText();
+        this.prependedText = link.getPrependedText();
+        this.appendedText = link.getAppendedText();
         this.pattern = link.getPattern();
         this.clickListener = link.getClickListener();
         this.longClickListener = link.getLongClickListener();
         this.textColor = link.getTextColor();
+        this.highlightAlpha = link.getHighlightAlpha();
         this.underlined = link.isUnderlined();
     }
 
@@ -71,6 +76,26 @@ public class Link {
     public Link setText(String text) {
         this.text = text;
         this.pattern = null;
+        return this;
+    }
+
+    /**
+     * This text will be added *before* any matches.
+     * @param text to place before the link's text.
+     * @return the current link object.
+     */
+    public Link setPrependedText(String text) {
+        this.prependedText = text;
+        return this;
+    }
+
+    /**
+     * This text will be added *after* any matches.
+     * @param text to place after the link's text.
+     * @return the current link object.
+     */
+    public Link setAppendedText(String text) {
+        this.appendedText = text;
         return this;
     }
 
@@ -137,6 +162,14 @@ public class Link {
 
     public String getText() {
         return text;
+    }
+
+    public String getPrependedText() {
+        return prependedText;
+    }
+
+    public String getAppendedText() {
+        return appendedText;
     }
 
     public Pattern getPattern() {

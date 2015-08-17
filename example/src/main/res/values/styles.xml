@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LinkBuilderExampleTheme" parent="android:Theme.Holo.Light">
+        <item name="linkBuilderStyle">@style/LinkBuilder</item>
+    </style>
+
+    <style name="LinkBuilder">
+        <item name="defaultLinkColor">#222222</item>
+    </style>
+</resources>

@@ -19,11 +19,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.klinker.android.link_builder.Link;
 import com.klinker.android.link_builder.LinkBuilder;
+import com.klinker.android.link_builder.TouchableMovementMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class MainActivity extends Activity {
         TextView demoText = (TextView) findViewById(R.id.test_text);
 
         // Add the links and make the links clickable
-        new LinkBuilder(demoText)
+        LinkBuilder.on(demoText)
                 .addLinks(getExampleLinks())
                 .build();
     }
@@ -104,6 +106,13 @@ public class MainActivity extends Activity {
         no.setUnderlined(false);
         no.setTextColor(Color.parseColor("#FFEB3B"));
 
+        // prepended text
+        Link prepend = new Link("prepended");
+        prepend.setPrependedText("(!)");
+
+        Link appended = new Link("appended");
+        appended.setAppendedText("(!)");
+
         // link to our play store page
         Link playStore = new Link("Play Store");
         playStore.setTextColor(Color.parseColor("#FF9800"));
@@ -122,6 +131,8 @@ public class MainActivity extends Activity {
         links.add(longClickHere);
         links.add(yes);
         links.add(no);
+        links.add(prepend);
+        links.add(appended);
         links.add(playStore);
 
         return links;

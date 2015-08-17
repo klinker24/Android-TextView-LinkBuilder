@@ -14,11 +14,11 @@
 
 package com.klinker.android.link_builder;
 
+import android.content.Context;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.MovementMethod;
-import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,26 +29,70 @@ import java.util.regex.Pattern;
 
 public class LinkBuilder {
 
+    private static final int TYPE_TEXT = 1;
+    private static final int TYPE_TEXT_VIEW = 2;
+
+    public static LinkBuilder from(Context context, String text) {
+        return new LinkBuilder(TYPE_TEXT)
+                .setContext(context)
+                .setText(text);
+    }
+
+    public static LinkBuilder on(TextView tv) {
+        return new LinkBuilder(TYPE_TEXT_VIEW)
+                .setContext(tv.getContext())
+                .setTextView(tv);
+    }
+
     private static final String TAG = "LinkBuilder";
 
+    private int type;
+
+    private Context context;
+
     private TextView textView;
+    private String text;
+
     private List<Link> links = new ArrayList<>();
 
     private SpannableString spannable = null;
 
     /**
      * Construct a LinkBuilder object.
-     * @param textView The TextView you will be adding links to.
+     *
+     * @param type TYPE_TEXT or TYPE_TEXT_VIEW
      */
+    public LinkBuilder(int type) {
+        this.type = type;
+    }
+
+    @Deprecated
     public LinkBuilder(TextView textView) {
         if (textView == null) {
             throw new IllegalArgumentException("textView is null");
         }
+
         this.textView = textView;
+    }
+
+    public LinkBuilder setTextView(TextView textView) {
+        this.textView = textView;
+        return setText(textView.getText().toString());
+    }
+
+    public LinkBuilder setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public LinkBuilder setContext(Context context) {
+        this.context = context;
+        return this;
     }
 
     /**
      * Add a single link to the builder.
+     *
      * @param link the rule that you want to link with.
      */
     public LinkBuilder addLink(Link link) {
@@ -61,6 +105,7 @@ public class LinkBuilder {
 
     /**
      * Add a list of links to the builder.
+     *
      * @param links list of rules you want to link with.
      */
     public LinkBuilder addLinks(List<Link> links) {
@@ -70,6 +115,11 @@ public class LinkBuilder {
         if (links.isEmpty()) {
             throw new IllegalArgumentException("link list is empty");
         }
+        for (Link link : links) {
+            if (link == null) {
+                throw new IllegalArgumentException("At least one link is null");
+            }
+        }
         this.links.addAll(links);
         return this;
     }
@@ -77,35 +127,44 @@ public class LinkBuilder {
     /**
      * Execute the rules to create the linked text.
      */
-    public void build() {
-        // exit if there are no links
-        if (links.size() == 0) {
-            return;
-        }
-
+    public CharSequence build() {
         // we extract individual links from the patterns
         turnPatternsToLinks();
+
+        // exit if there are no links
+        if (links.size() == 0) {
+            return null;
+        }
+
+        // we need to apply this text before the links are created
+        applyAppendedAndPrependedText();
+
 
         // add those links to our spannable text so they can be clicked
         for (Link link : links) {
             addLinkToSpan(link);
         }
 
-        // set the spannable text
-        textView.setText(spannable);
+        if (type == TYPE_TEXT_VIEW) {
+            // set the spannable text
+            textView.setText(spannable);
 
-        // add the movement method so we know what actions to perform on the clicks
-        addLinkMovementMethod();
+            // add the movement method so we know what actions to perform on the clicks
+            addLinkMovementMethod();
+        }
+
+        return spannable;
     }
 
     /**
      * Add the link rule and check if spannable text is created.
+     *
      * @param link rule to add to the text.
      */
     private void addLinkToSpan(Link link) {
         // create a new spannable string if none exists
         if (spannable == null) {
-            spannable = SpannableString.valueOf(textView.getText());
+            spannable = SpannableString.valueOf(text);
         }
 
         // add the rule to the spannable string
@@ -114,22 +173,29 @@ public class LinkBuilder {
 
     /**
      * Find the link within the spannable text
-     * @param s spannable text that we are adding the rule to.
+     *
+     * @param s    spannable text that we are adding the rule to.
      * @param link rule to add to the text.
      */
     private void addLinkToSpan(Spannable s, Link link) {
         // get the current text
-        String text = textView.getText().toString();
+        Pattern pattern = Pattern.compile(Pattern.quote(link.getText()));
+        Matcher matcher = pattern.matcher(text);
 
-        // find the start and end point of the linked text within the TextView
-        int start = text.indexOf(link.getText());
-        if (start >= 0) {
-            int end = start + link.getText().length();
+        // find one or more links inside the text
+        while (matcher.find()) {
 
-            // add link to the spannable text
-            applyLink(link, new Range(start, end), s);
+            // find the start and end point of the linked text within the TextView
+            int start = matcher.start();
+
+            //int start = text.indexOf(link.getText());
+            if (start >= 0) {
+                int end = start + link.getText().length();
+
+                // add link to the spannable text
+                applyLink(link, new Range(start, end), s);
+            }
         }
-
     }
 
     /**
@@ -147,12 +213,13 @@ public class LinkBuilder {
 
     /**
      * Set the link rule to the spannable text.
-     * @param link rule we are applying.
+     *
+     * @param link  rule we are applying.
      * @param range the start and end point of the link within the text.
-     * @param text the spannable text to add the link to.
+     * @param text  the spannable text to add the link to.
      */
-    private void applyLink(Link link, final Range range, final Spannable text) {
-        TouchableSpan span = new TouchableSpan(link);
+    private void applyLink(Link link, Range range, Spannable text) {
+        TouchableSpan span = new TouchableSpan(context, link);
         text.setSpan(span, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
@@ -175,11 +242,35 @@ public class LinkBuilder {
     }
 
     /**
+     * Add the appended and prepended text to the links and apply it to the TextView
+     * so that we can create the SpannableString.
+     */
+    private void applyAppendedAndPrependedText() {
+        for (int i = 0; i < links.size(); i++) {
+            Link link = links.get(i);
+
+            if (link.getPrependedText() != null) {
+                String totalText = link.getPrependedText() + " " + link.getText();
+
+                text = text.replace(link.getText(), totalText);
+                links.get(i).setText(totalText);
+            }
+
+            if (link.getAppendedText() != null) {
+                String totalText = link.getText() + " " + link.getAppendedText();
+
+                text = text.replace(link.getText(), totalText);
+                links.get(i).setText(totalText);
+            }
+        }
+    }
+
+    /**
      * Convert the pattern to individual links.
+     *
      * @param linkWithPattern pattern we want to match.
      */
     private void addLinksFromPattern(Link linkWithPattern) {
-        String text = textView.getText().toString();
         Pattern pattern = linkWithPattern.getPattern();
         Matcher m = pattern.matcher(text);
 

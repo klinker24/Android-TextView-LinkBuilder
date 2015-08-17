@@ -27,8 +27,12 @@
 
         Should this be underlined? Yes No\n\n
 
+        This link has some prepended text.\n\n
+
+        While this link has some appended text.\n\n
+
         Hope you enjoyed the demo :)\n\n
 
-        Check out our real apps on the Play Store!
+        Check out our real apps on the Play Store
     </string>
 </resources>
