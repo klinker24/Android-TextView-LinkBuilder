@@ -15,6 +15,7 @@
 package com.klinker.android.link_builder;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 
 import java.util.regex.Pattern;
 
@@ -30,6 +31,7 @@ public class Link {
     private int textColor = 0;
     private float highlightAlpha = DEFAULT_ALPHA;
     private boolean underlined = true;
+    private Typeface typeface = Typeface.DEFAULT;
 
     private OnClickListener clickListener;
     private OnLongClickListener longClickListener;
@@ -48,6 +50,7 @@ public class Link {
         this.textColor = link.getTextColor();
         this.highlightAlpha = link.getHighlightAlpha();
         this.underlined = link.isUnderlined();
+        this.typeface = link.getTypeface();
     }
 
     /**
@@ -160,6 +163,11 @@ public class Link {
         return this;
     }
 
+    public Link setTypeface(Typeface typeface) {
+        this.typeface = typeface;
+        return this;
+    }
+
     public String getText() {
         return text;
     }
@@ -186,6 +194,10 @@ public class Link {
 
     public boolean isUnderlined() {
         return underlined;
+    }
+
+    public Typeface getTypeface() {
+        return typeface;
     }
 
     public OnClickListener getClickListener() {

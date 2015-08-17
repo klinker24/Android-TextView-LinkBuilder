@@ -17,15 +17,14 @@ package com.klinker.android.link_builder_example;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.SpannableString;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.klinker.android.link_builder.Link;
 import com.klinker.android.link_builder.LinkBuilder;
-import com.klinker.android.link_builder.TouchableMovementMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +50,8 @@ public class MainActivity extends Activity {
         LinkBuilder.on(demoText)
                 .addLinks(getExampleLinks())
                 .build();
+
+
     }
 
     private List<Link> getExampleLinks() {
@@ -58,7 +59,8 @@ public class MainActivity extends Activity {
 
         // create a single click link to the github page
         Link github = new Link("TextView-LinkBuilder");
-        github.setOnClickListener(new Link.OnClickListener() {
+        github.setTypeface(Typeface.DEFAULT_BOLD)
+        .setOnClickListener(new Link.OnClickListener() {
             @Override
             public void onClick(String clickedText) {
                 openLink(GITHUB_LINK);

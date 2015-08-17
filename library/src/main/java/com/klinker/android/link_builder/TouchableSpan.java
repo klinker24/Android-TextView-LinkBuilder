@@ -17,10 +17,10 @@ package com.klinker.android.link_builder;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -121,6 +121,8 @@ public class TouchableSpan extends ClickableSpan {
         ds.setUnderlineText(link.isUnderlined());
         ds.setColor(textColor);
         ds.bgColor = touched ? adjustAlpha(textColor, link.getHighlightAlpha()) : Color.TRANSPARENT;
+        ds.setTypeface(link.getTypeface());
+
     }
 
     /**
