@@ -62,7 +62,7 @@ public class LinkBuilder {
      *
      * @param type TYPE_TEXT or TYPE_TEXT_VIEW
      */
-    public LinkBuilder(int type) {
+    private LinkBuilder(int type) {
         this.type = type;
     }
 
@@ -73,6 +73,7 @@ public class LinkBuilder {
         }
 
         this.textView = textView;
+        setText(textView.getText().toString());
     }
 
     public LinkBuilder setTextView(TextView textView) {
