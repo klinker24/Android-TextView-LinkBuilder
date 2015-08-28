@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.klinker.android.link_builder.LinkConsumableTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:listPreferredItemHeight"
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:gravity="center_vertical"
+    android:minHeight="?android:listPreferredItemHeight"
+    android:padding="8dp" />

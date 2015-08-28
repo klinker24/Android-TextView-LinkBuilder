@@ -19,6 +19,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.MovementMethod;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;

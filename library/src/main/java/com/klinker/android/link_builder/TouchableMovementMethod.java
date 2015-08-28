@@ -14,17 +14,12 @@
 
 package com.klinker.android.link_builder;
 
-import android.content.Context;
 import android.os.Handler;
-import android.os.Vibrator;
 import android.text.Layout;
-import android.text.NoCopySpan;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
 import android.text.method.MovementMethod;
-import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.widget.TextView;
@@ -33,6 +28,10 @@ public class TouchableMovementMethod extends LinkMovementMethod {
 
     // TouchableSpan to handle the clicks
     private TouchableSpan mPressedSpan;
+
+    public TouchableSpan getPressedSpan() {
+        return mPressedSpan;
+    }
 
     /**
      * Manages the touches to find the link that was clicked and highlight it
@@ -100,6 +99,7 @@ public class TouchableMovementMethod extends LinkMovementMethod {
 
             Selection.removeSelection(spannable);
         }
+
         return true;
     }
 
