@@ -102,6 +102,12 @@ If you would like to set the default text color for links without inputting it m
 </style>
 ```
 
+## Usage with ListView.OnItemClickListener
+
+By default, LinkBuilder will consume all the touch events on your TextView. This means that ListView.OnItemClickListener will never get called if you try to implement it. The fix for this is to implement the LinkConsumableTextView rather than the normal TextView in your layouts.
+
+My LinkConsumableTextView will only consume touch events if you have clicked the link within the TextView. Otherwise, it will defer the touch event to the parent, which allows you to use ListView's OnItemClickListener method.
+
 ## Contributing
 
 Please fork this repository and contribute back using [pull requests](https://github.com/klinker24/Android-TextView-LinkBuilder/pulls). Features can be requested using [issues](https://github.com/klinker24/Android-TextView-LinkBuilder/issues). All code, comments, and critiques are greatly appreciated.

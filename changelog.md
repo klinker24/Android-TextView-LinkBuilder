@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.3.0:
+- Added ability to work with ListView.OnItemClickListener through the use of LinkConsumableTextView
+
 ### Version 1.2.0:
 - Add a set typeface method to Link
 
