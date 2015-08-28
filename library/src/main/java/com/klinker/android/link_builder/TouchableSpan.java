@@ -17,7 +17,6 @@ package com.klinker.android.link_builder;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Handler;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
@@ -141,5 +140,9 @@ public class TouchableSpan extends ClickableSpan {
 
         // Now return the values (from styleAttrs) from the style
         return context.obtainStyledAttributes(styleResId, styleAttrs);
+    }
+
+    public boolean isTouched() {
+        return touched;
     }
 }
