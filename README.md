@@ -30,7 +30,7 @@ This is the preferred way. Simply add:
 
 ```groovy
 dependencies {
-    compile 'com.klinkerapps:link_builder:1.2.0@aar'
+    compile 'com.klinkerapps:link_builder:1.3.0@aar'
 }
 ```
 
