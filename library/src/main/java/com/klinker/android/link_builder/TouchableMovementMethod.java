@@ -29,6 +29,10 @@ public class TouchableMovementMethod extends LinkMovementMethod {
     // TouchableSpan to handle the clicks
     private TouchableSpan mPressedSpan;
 
+    public TouchableSpan getPressedSpan() {
+        return mPressedSpan;
+    }
+
     /**
      * Manages the touches to find the link that was clicked and highlight it
      * @param textView view the user clicked
@@ -95,11 +99,8 @@ public class TouchableMovementMethod extends LinkMovementMethod {
 
             Selection.removeSelection(spannable);
         }
-        if (mPressedSpan != null) {
-            return mPressedSpan.isTouched();
-        } else {
-            return false;
-        }
+
+        return true;
     }
 
     /**
