@@ -31,6 +31,7 @@ public class Link {
     private int textColor = 0;
     private float highlightAlpha = DEFAULT_ALPHA;
     private boolean underlined = true;
+    private boolean bold = false;
     private Typeface typeface = Typeface.DEFAULT;
 
     private OnClickListener clickListener;
@@ -50,6 +51,7 @@ public class Link {
         this.textColor = link.getTextColor();
         this.highlightAlpha = link.getHighlightAlpha();
         this.underlined = link.isUnderlined();
+        this.bold = link.isBold();
         this.typeface = link.getTypeface();
     }
 
@@ -154,6 +156,16 @@ public class Link {
     }
 
     /**
+     * Specify whether you want it bold or not.
+     * @param bold
+     * @return the current link object.
+     */
+    public Link setBold(boolean bold) {
+        this.bold = bold;
+        return this;
+    }
+
+    /**
      * Specify the alpha of the links background when the user clicks it.
      * @param alpha
      * @return the current link object.
@@ -194,6 +206,10 @@ public class Link {
 
     public boolean isUnderlined() {
         return underlined;
+    }
+
+    public boolean isBold() {
+        return bold;
     }
 
     public Typeface getTypeface() {

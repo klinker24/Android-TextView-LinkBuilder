@@ -50,8 +50,6 @@ public class MainActivity extends Activity {
         LinkBuilder.on(demoText)
                 .addLinks(getExampleLinks())
                 .build();
-
-
     }
 
     private List<Link> getExampleLinks() {
@@ -108,6 +106,11 @@ public class MainActivity extends Activity {
         no.setUnderlined(false);
         no.setTextColor(Color.parseColor("#FFEB3B"));
 
+        // bold
+        Link bold = new Link("bold");
+        bold.setBold(true);
+        bold.setTextColor(Color.parseColor("#FF0000"));
+
         // prepended text
         Link prepend = new Link("prepended");
         prepend.setPrependedText("(!)");
@@ -133,6 +136,7 @@ public class MainActivity extends Activity {
         links.add(longClickHere);
         links.add(yes);
         links.add(no);
+        links.add(bold);
         links.add(prepend);
         links.add(appended);
         links.add(playStore);
