@@ -110,7 +110,7 @@ public class TouchableSpan extends ClickableSpan {
     }
 
     /**
-     * Draw the links background and set whether or not we want it to be underlined
+     * Draw the links background and set whether or not we want it to be underlined or bold
      * @param ds the link
      */
     @Override
@@ -118,10 +118,10 @@ public class TouchableSpan extends ClickableSpan {
         super.updateDrawState(ds);
 
         ds.setUnderlineText(link.isUnderlined());
+        ds.setFakeBoldText(link.isBold());
         ds.setColor(textColor);
         ds.bgColor = touched ? adjustAlpha(textColor, link.getHighlightAlpha()) : Color.TRANSPARENT;
         ds.setTypeface(link.getTypeface());
-
     }
 
     /**

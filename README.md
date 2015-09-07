@@ -16,6 +16,7 @@ Similar to how all the big players do it (Google+, Twitter, *cough* Talon *cough
  - Change the color of the linked text
  - Modify the transparency of the text's highlighting when the user touches it
  - Set whether or not you want the text underlined
+ - Set whether or not you want the text bold
  - Default link color from an activity theme
 
 The main advantage to using this library over TextView's autolink functionality is that you can link anything, not just web address, emails, and phone numbers. It also provides color customization and touch feedback.
@@ -53,6 +54,7 @@ Link link = new Link("click here")
     .setTextColor(Color.parseColor("#259B24"))    // optional, defaults to holo blue
     .setHighlightAlpha(.4f) 					  // optional, defaults to .15f
     .setUnderlined(false) 						  // optional, defaults to true
+    .setBold(true)      						  // optional, defaults to false
     .setOnLongClickListener(new Link.OnLongClickListener() {
         @Override
         public void onLongClick(String clickedText) {
