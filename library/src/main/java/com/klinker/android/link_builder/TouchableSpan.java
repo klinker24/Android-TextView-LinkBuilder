@@ -121,7 +121,8 @@ public class TouchableSpan extends ClickableSpan {
         ds.setFakeBoldText(link.isBold());
         ds.setColor(textColor);
         ds.bgColor = touched ? adjustAlpha(textColor, link.getHighlightAlpha()) : Color.TRANSPARENT;
-        ds.setTypeface(link.getTypeface());
+        if(link.getTypeface() != null)
+            ds.setTypeface(link.getTypeface());
     }
 
     /**
