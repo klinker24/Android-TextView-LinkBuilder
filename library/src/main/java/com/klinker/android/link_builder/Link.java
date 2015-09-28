@@ -32,7 +32,7 @@ public class Link {
     private float highlightAlpha = DEFAULT_ALPHA;
     private boolean underlined = true;
     private boolean bold = false;
-    private Typeface typeface = Typeface.DEFAULT;
+    private Typeface typeface;
 
     private OnClickListener clickListener;
     private OnLongClickListener longClickListener;
