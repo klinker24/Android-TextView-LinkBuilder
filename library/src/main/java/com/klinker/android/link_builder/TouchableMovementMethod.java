@@ -27,9 +27,9 @@ import android.widget.TextView;
 public class TouchableMovementMethod extends LinkMovementMethod {
 
     // TouchableSpan to handle the clicks
-    private TouchableSpan mPressedSpan;
+    private TouchableBaseSpan mPressedSpan;
 
-    public TouchableSpan getPressedSpan() {
+    public TouchableBaseSpan getPressedSpan() {
         return mPressedSpan;
     }
 
@@ -70,7 +70,7 @@ public class TouchableMovementMethod extends LinkMovementMethod {
                         spannable.getSpanEnd(mPressedSpan));
             }
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-            TouchableSpan touchedSpan = getPressedSpan(textView, spannable, event);
+            TouchableBaseSpan touchedSpan = getPressedSpan(textView, spannable, event);
 
             if (mPressedSpan != null && touchedSpan != mPressedSpan) {
                 mPressedSpan.setTouched(false);
@@ -110,7 +110,7 @@ public class TouchableMovementMethod extends LinkMovementMethod {
      * @param event motion event that occurred
      * @return the touchable span that was pressed
      */
-    private TouchableSpan getPressedSpan(TextView widget, Spannable spannable, MotionEvent event) {
+    private TouchableBaseSpan getPressedSpan(TextView widget, Spannable spannable, MotionEvent event) {
 
         int x = (int) event.getX();
         int y = (int) event.getY();
@@ -130,7 +130,7 @@ public class TouchableMovementMethod extends LinkMovementMethod {
         // Could be what was causing issue 7 in the first place:
         // https://github.com/klinker24/Android-TextView-LinkBuilder/issues/7
         if (off != end && off != end - 1) {
-            TouchableSpan[] link = spannable.getSpans(off, off, TouchableSpan.class);
+            TouchableBaseSpan[] link = spannable.getSpans(off, off, TouchableBaseSpan.class);
 
             if (link.length > 0)
                 return link[0];
