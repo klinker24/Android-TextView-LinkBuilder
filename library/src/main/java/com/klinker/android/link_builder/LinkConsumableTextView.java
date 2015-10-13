@@ -40,7 +40,7 @@ public class LinkConsumableTextView extends TextView {
         MovementMethod movementMethod = getMovementMethod();
 
         if (movementMethod instanceof TouchableMovementMethod) {
-            TouchableSpan span = ((TouchableMovementMethod) movementMethod).getPressedSpan();
+            TouchableBaseSpan span = ((TouchableMovementMethod) movementMethod).getPressedSpan();
 
             if (span != null) {
                 return true;

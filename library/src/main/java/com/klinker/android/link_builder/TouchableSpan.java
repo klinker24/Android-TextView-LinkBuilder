@@ -23,11 +23,9 @@ import android.text.style.ClickableSpan;
 import android.util.TypedValue;
 import android.view.View;
 
-public class TouchableSpan extends ClickableSpan {
+public class TouchableSpan extends TouchableBaseSpan {
 
     private final Link link;
-    public boolean touched = false;
-
     private int textColor;
 
     /**
@@ -62,18 +60,11 @@ public class TouchableSpan extends ClickableSpan {
      * @param widget TextView containing the touchable span
      */
     public void onClick(View widget) {
-
         // handle the click
         if (link.getClickListener() != null) {
             link.getClickListener().onClick(link.getText());
         }
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                TouchableMovementMethod.touched = false;
-            }
-        }, 500);
+        super.onClick(widget);
     }
 
     /**
@@ -81,18 +72,11 @@ public class TouchableSpan extends ClickableSpan {
      * @param widget TextView containing the touchable span
      */
     public void onLongClick(View widget) {
-
         // handle the long click
         if (link.getLongClickListener() != null) {
             link.getLongClickListener().onLongClick(link.getText());
         }
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                TouchableMovementMethod.touched = false;
-            }
-        }, 500);
+        super.onLongClick(widget);
     }
 
     /**
@@ -125,14 +109,6 @@ public class TouchableSpan extends ClickableSpan {
             ds.setTypeface(link.getTypeface());
     }
 
-    /**
-     * Specifiy whether or not the link is currently touched
-     * @param touched
-     */
-    public void setTouched(boolean touched) {
-        this.touched = touched;
-    }
-
     protected static TypedArray obtainStyledAttrsFromThemeAttr(Context context, int themeAttr, int[] styleAttrs) {
         // Need to get resource id of style pointed to from the theme attr
         TypedValue outValue = new TypedValue();
@@ -141,9 +117,5 @@ public class TouchableSpan extends ClickableSpan {
 
         // Now return the values (from styleAttrs) from the style
         return context.obtainStyledAttributes(styleResId, styleAttrs);
-    }
-
-    public boolean isTouched() {
-        return touched;
     }
 }
