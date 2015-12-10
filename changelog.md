@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.3.1:
+- Add a method to make links bold
+
 ### Version 1.3.0:
 - Added ability to work with ListView.OnItemClickListener through the use of LinkConsumableTextView
 
