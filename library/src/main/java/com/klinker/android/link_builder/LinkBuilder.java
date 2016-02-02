@@ -18,9 +18,8 @@ import android.content.Context;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.method.MovementMethod;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class LinkBuilder {
     private Context context;
 
     private TextView textView;
-    private String text;
+    private CharSequence text;
 
     private List<Link> links = new ArrayList<>();
 
@@ -80,10 +79,10 @@ public class LinkBuilder {
 
     public LinkBuilder setTextView(TextView textView) {
         this.textView = textView;
-        return setText(textView.getText().toString());
+        return setText(textView.getText());
     }
 
-    public LinkBuilder setText(String text) {
+    public LinkBuilder setText(CharSequence text) {
         this.text = text;
         return this;
     }
@@ -255,14 +254,14 @@ public class LinkBuilder {
             if (link.getPrependedText() != null) {
                 String totalText = link.getPrependedText() + " " + link.getText();
 
-                text = text.replace(link.getText(), totalText);
+                text = TextUtils.replace(text, new String[]{link.getText()}, new CharSequence[]{totalText});
                 links.get(i).setText(totalText);
             }
 
             if (link.getAppendedText() != null) {
                 String totalText = link.getText() + " " + link.getAppendedText();
 
-                text = text.replace(link.getText(), totalText);
+                text = TextUtils.replace(text, new String[]{link.getText()}, new CharSequence[]{totalText});
                 links.get(i).setText(totalText);
             }
         }
