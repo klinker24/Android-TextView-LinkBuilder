@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.3.2:
+- Convert to using CharSequence
+
 ### Version 1.3.1:
 - Add a method to make links bold
 
