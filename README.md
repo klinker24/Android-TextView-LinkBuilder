@@ -2,24 +2,24 @@
 
 ![Screenshot](preview.png)
 
-Insanely easy way to create clickable links within a TextView. 
+Insanely easy way to create clickable links within a `TextView`. 
 
-While creating [Talon for Twitter](https://github.com/klinker24/Talon-for-Twitter), one of the most difficult things I encountered was creating these clickable links based on specific text. Luckily, I have made it easy for anyone to apply this type of style to their TextView's.
+While creating [Talon for Twitter](https://github.com/klinker24/Talon-for-Twitter), one of the most difficult things I encountered was creating these clickable links based on specific text. Luckily, I have made it easy for anyone to apply this type of style to their `TextView`'s.
 
 ## Features
 
-Similar to how all the big players do it (Google+, Twitter, *cough* Talon *cough*), this library allows you to create clickable links for any combination of Strings within a TextView.
+Similar to how all the big players do it (Google+, Twitter, *cough* Talon *cough*), this library allows you to create clickable links for any combination of `String`s within a `TextView`.
 
- - Specify long and short click actions of a specific word within your TextView
+ - Specify long and short click actions of a specific word within your `TextView`
  - Provide user feedback by highlighting the text when the user touches it
- - Match single strings or use a regular expression to set clickable links to any text conforming to that pattern
+ - Match single `String`s or use a regular expression to set clickable links to any text conforming to that pattern
  - Change the color of the linked text
  - Modify the transparency of the text's highlighting when the user touches it
  - Set whether or not you want the text underlined
  - Set whether or not you want the text bold
  - Default link color from an activity theme
 
-The main advantage to using this library over TextView's autolink functionality is that you can link anything, not just web address, emails, and phone numbers. It also provides color customization and touch feedback.
+The main advantage to using this library over `TextView`'s autolink functionality is that you can link anything, not just web address, emails, and phone numbers. It also provides color customization and touch feedback.
 
 ## Installation
 
@@ -76,7 +76,7 @@ LinkBuilder.on(demoText)
     .build(); // create the clickable links
 ```
 
-With version 1.1.0, you can create a CharSequence from a String instead of creating and applying the links directly to the TextView. Do not forget to set the movement method on your TextView's after you have applied the CharSequence, or else the links will not be clickable.
+With version 1.1.0, you can create a `CharSequence` from a `String` instead of creating and applying the links directly to the `TextView`. Do not forget to set the movement method on your `TextView`'s after you have applied the `CharSequence`, or else the links will not be clickable.
 
 ```java
 // find the text view. Used to create the link builder
@@ -93,7 +93,7 @@ demoText.setText(sequence);
 demoText.setMovementMethod(TouchableMovementMethod.getInstance());
 ```
 
-If you would like to set the default text color for links without inputting it manually on each Link object, it can be set from the activity theme.
+If you would like to set the default text color for links without inputting it manually on each `Link` object, it can be set from the activity theme.
 
 ```xml
 <style name="LinkBuilderExampleTheme" parent="android:Theme.Holo.Light">
@@ -106,9 +106,9 @@ If you would like to set the default text color for links without inputting it m
 
 ## Usage with ListView.OnItemClickListener
 
-By default, LinkBuilder will consume all the touch events on your TextView. This means that ListView.OnItemClickListener will never get called if you try to implement it. The fix for this is to implement the LinkConsumableTextView rather than the normal TextView in your layouts.
+By default, `LinkBuilder` will consume all the touch events on your `TextView`. This means that `ListView.OnItemClickListener` will never get called if you try to implement it. The fix for this is to implement the `LinkConsumableTextView` rather than the normal TextView in your layouts.
 
-My LinkConsumableTextView will only consume touch events if you have clicked the link within the TextView. Otherwise, it will defer the touch event to the parent, which allows you to use ListView's OnItemClickListener method.
+My `LinkConsumableTextView` will only consume touch events if you have clicked the link within the `TextView`. Otherwise, it will defer the touch event to the parent, which allows you to use `ListView.OnItemClickListener` method.
 
 ## Contributing
 
