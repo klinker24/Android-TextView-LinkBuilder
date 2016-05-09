@@ -33,15 +33,12 @@
         <activity
             android:name=".list_view_example.ListActivity"
             android:label="@string/app_name"
-            android:theme="@style/LinkBuilderExampleTheme">
+            android:theme="@style/LinkBuilderExampleTheme" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-
+        <activity
+            android:name=".HtmlLinkExampleActivity"
+            android:label="@string/app_name"
+            android:theme="@style/LinkBuilderExampleTheme" />
 
     </application>
 
