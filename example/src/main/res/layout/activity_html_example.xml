@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="FromHtml without html <a> tags removed:"
+            android:text="FromHtml without html 'a' tags removed:"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -23,7 +23,7 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:text="FromHtml with html <a> tags removed:"
+            android:text="FromHtml with html 'a' tags removed:"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
