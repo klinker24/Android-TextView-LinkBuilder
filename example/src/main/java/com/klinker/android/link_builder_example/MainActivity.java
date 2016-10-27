@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        startActivity(new Intent(this, HtmlLinkExampleActivity.class));
-
         // set the content view. Contains a scrollview with a text view inside
         setContentView(R.layout.activity_main);
 
