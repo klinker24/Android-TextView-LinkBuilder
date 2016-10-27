@@ -20,17 +20,20 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.klinker.android.link_builder.Link;
 import com.klinker.android.link_builder.LinkBuilder;
+import com.klinker.android.link_builder_example.list_view_example.ListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private static final String GITHUB_LINK = "https://github.com/klinker24";
     private static final String TWITTER_PROFILE = "https://twitter.com/";
@@ -40,8 +43,15 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        startActivity(new Intent(this, HtmlLinkExampleActivity.class));
+
         // set the content view. Contains a scrollview with a text view inside
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setTitle(R.string.app_name);
 
         // find the text view. Used to create the link builder
         TextView demoText = (TextView) findViewById(R.id.test_text);

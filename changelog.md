@@ -1,5 +1,9 @@
 ## Changelog
 
+### Version 1.3.3:
+- Update example with Material Design
+- Update dependencies and build tools for SDK 25
+
 ### Version 1.3.2:
 - Convert to using `CharSequence`
 

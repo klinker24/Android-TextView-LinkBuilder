@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class HtmlLinkExampleActivity extends Activity {
+public class HtmlLinkExampleActivity extends AppCompatActivity {
 
     private static final String TEXT =
             "Here is an example link <a href=\"www.google.com\">www.google.com</a>." +
@@ -29,6 +31,11 @@ public class HtmlLinkExampleActivity extends Activity {
 
         // set the content view. Contains a scrollview with a text view inside
         setContentView(R.layout.activity_html_example);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setTitle(R.string.app_name);
 
         // find the text view. Used to create the link builder
         TextView demo1 = (TextView) findViewById(R.id.demo1);

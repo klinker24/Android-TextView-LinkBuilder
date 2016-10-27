@@ -38,44 +38,12 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"/>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp">
-
-            <TextView
-                android:text="FromHtml without html 'a' tags removed:"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView android:id="@+id/demo1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="20sp"/>
-
-            <TextView
-                android:text="FromHtml with html 'a' tags removed:"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView android:id="@+id/demo2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="20sp"/>
-
-        </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
-
 
 
