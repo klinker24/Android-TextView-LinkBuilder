@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.4.0:
+- Add the ability to customize the text color of links when they are being touched/highlighted
+
 ### Version 1.3.3:
 - Update example with Material Design
 - Update dependencies and build tools for SDK 25
