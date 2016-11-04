@@ -14,6 +14,7 @@ Similar to how all the big players do it (Google+, Twitter, *cough* Talon *cough
  - Provide user feedback by highlighting the text when the user touches it
  - Match single `String`s or use a regular expression to set clickable links to any text conforming to that pattern
  - Change the color of the linked text
+ - Change the color of the linked text when the user touches it
  - Modify the transparency of the text's highlighting when the user touches it
  - Set whether or not you want the text underlined
  - Set whether or not you want the text bold
@@ -51,10 +52,11 @@ For a list of regular expressions that I use in Talon, you can go [here](https:/
 // Create the link rule to set what text should be linked.
 // can use a specific string or a regex pattern
 Link link = new Link("click here")
-    .setTextColor(Color.parseColor("#259B24"))    // optional, defaults to holo blue
-    .setHighlightAlpha(.4f) 					  // optional, defaults to .15f
-    .setUnderlined(false) 						  // optional, defaults to true
-    .setBold(true)      						  // optional, defaults to false
+    .setTextColor(Color.parseColor("#259B24"))                  // optional, defaults to holo blue
+    .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
+    .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
+    .setUnderlined(false)                                       // optional, defaults to true
+    .setBold(true)                                              // optional, defaults to false
     .setOnLongClickListener(new Link.OnLongClickListener() {
         @Override
         public void onLongClick(String clickedText) {
@@ -101,6 +103,7 @@ If you would like to set the default text color for links without inputting it m
 </style>
 <style name="LinkBuilder">
     <item name="defaultLinkColor">#222222</item>
+    <item name="defaultTextColorOfHighlightedLink">#444444</item>
 </style>
 ```
 

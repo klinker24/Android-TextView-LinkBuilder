@@ -129,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
         // link to our play store page
         Link playStore = new Link("Play Store");
         playStore.setTextColor(Color.parseColor("#FF9800"));
+        playStore.setTextColorOfHighlightedLink(Color.parseColor("#FF6600"));
+        playStore.setHighlightAlpha(0f);
         playStore.setOnClickListener(new Link.OnClickListener() {
             @Override
             public void onClick(String clickedText) {

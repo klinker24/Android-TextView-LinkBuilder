@@ -27,6 +27,7 @@ public class TouchableSpan extends TouchableBaseSpan {
 
     private final Link link;
     private int textColor;
+    private int textColorOfHighlightedLink;
 
     /**
      * Construct new TouchableSpan using the link
@@ -36,20 +37,27 @@ public class TouchableSpan extends TouchableBaseSpan {
         this.link = link;
 
         if (link.getTextColor() == 0) {
-            this.textColor = getDefaultColor(context);
+            this.textColor = getDefaultColor(context, R.styleable.LinkBuilder_defaultLinkColor);
         } else {
             this.textColor = link.getTextColor();
+        }
+
+        if (link.getTextColorOfHighlightedLink() == 0) {
+            this.textColorOfHighlightedLink = getDefaultColor(context, R.styleable.LinkBuilder_defaultTextColorOfHighlightedLink);
+        } else {
+            this.textColorOfHighlightedLink = link.getTextColorOfHighlightedLink();
         }
     }
 
     /**
      * Finds the default color for links based on the current theme.
      * @param context activity
+     * @param index index of attribute to retrieve based on current theme
      * @return color as an integer
      */
-    private int getDefaultColor(Context context) {
+    private int getDefaultColor(Context context, int index) {
         TypedArray array = obtainStyledAttrsFromThemeAttr(context, R.attr.linkBuilderStyle, R.styleable.LinkBuilder);
-        int color = array.getColor(R.styleable.LinkBuilder_defaultLinkColor, Link.DEFAULT_COLOR);
+        int color = array.getColor(index, Link.DEFAULT_COLOR);
         array.recycle();
 
         return color;
@@ -103,7 +111,7 @@ public class TouchableSpan extends TouchableBaseSpan {
 
         ds.setUnderlineText(link.isUnderlined());
         ds.setFakeBoldText(link.isBold());
-        ds.setColor(textColor);
+        ds.setColor(touched ? textColorOfHighlightedLink : textColor);
         ds.bgColor = touched ? adjustAlpha(textColor, link.getHighlightAlpha()) : Color.TRANSPARENT;
         if(link.getTypeface() != null)
             ds.setTypeface(link.getTypeface());

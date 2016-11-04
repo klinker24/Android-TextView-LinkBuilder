@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="LinkBuilder">
         <attr name="defaultLinkColor" format="color" />
+        <attr name="defaultTextColorOfHighlightedLink" format="color" />
     </declare-styleable>
 
     <attr name="linkBuilderStyle" format="reference" />
