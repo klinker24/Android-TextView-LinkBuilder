@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.5.0:
+- Add ability to only search for the first occurrence of a pattern
+
 ### Version 1.4.0:
 - Add the ability to customize the text color of links when they are being touched/highlighted
 

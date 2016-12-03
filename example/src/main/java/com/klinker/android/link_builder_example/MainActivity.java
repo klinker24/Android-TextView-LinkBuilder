@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         // Add the links and make the links clickable
         LinkBuilder.on(demoText)
                 .addLinks(getExampleLinks())
+                .setFindOnlyFirstMatchesForAnyLink(true)
                 .build();
     }
 

@@ -54,6 +54,8 @@ public class LinkBuilder {
     private TextView textView;
     private CharSequence text;
 
+    private boolean findOnlyFirstMatch = false;
+
     private List<Link> links = new ArrayList<>();
 
     private SpannableString spannable = null;
@@ -89,6 +91,11 @@ public class LinkBuilder {
 
     public LinkBuilder setContext(Context context) {
         this.context = context;
+        return this;
+    }
+
+    public LinkBuilder setFindOnlyFirstMatchesForAnyLink(boolean findOnlyFirst) {
+        this.findOnlyFirstMatch = findOnlyFirst;
         return this;
     }
 
@@ -197,6 +204,12 @@ public class LinkBuilder {
                 // add link to the spannable text
                 applyLink(link, new Range(start, end), s);
             }
+
+            // if we are only looking for the first occurrence of this pattern,
+            // then quit now and don't look any further
+            if (findOnlyFirstMatch) {
+                break;
+            }
         }
     }
 
@@ -278,6 +291,12 @@ public class LinkBuilder {
 
         while (m.find()) {
             links.add(new Link(linkWithPattern).setText(m.group()));
+
+            // if we are only looking for the first occurrence of this pattern,
+            // then quit now and don't look any further
+            if (findOnlyFirstMatch) {
+                break;
+            }
         }
     }
 
