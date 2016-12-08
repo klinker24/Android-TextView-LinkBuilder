@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         // Add the links and make the links clickable
         LinkBuilder.on(demoText)
                 .addLinks(getExampleLinks())
-                .setFindOnlyFirstMatchesForAnyLink(true)
                 .build();
     }
 
@@ -138,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
                 openLink(PLAY_STORE);
             }
         });
-
 
         // add the links to the list
         links.add(github);

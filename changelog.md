@@ -1,5 +1,11 @@
 ## Changelog
 
+### Version 1.5.2:
+- Don't default the text color of highlighted links to light blue
+
+### Version 1.5.1:
+- If a link already exists on a block of text, don't try to put another link over the top of it
+
 ### Version 1.5.0:
 - Add ability to only search for the first occurrence of a pattern
 

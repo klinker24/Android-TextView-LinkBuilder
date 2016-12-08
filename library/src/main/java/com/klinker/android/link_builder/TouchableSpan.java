@@ -44,6 +44,11 @@ public class TouchableSpan extends TouchableBaseSpan {
 
         if (link.getTextColorOfHighlightedLink() == 0) {
             this.textColorOfHighlightedLink = getDefaultColor(context, R.styleable.LinkBuilder_defaultTextColorOfHighlightedLink);
+
+            if (this.textColorOfHighlightedLink == Link.DEFAULT_COLOR) {
+                // don't use the default of light blue for this color
+                this.textColorOfHighlightedLink = textColor;
+            }
         } else {
             this.textColorOfHighlightedLink = link.getTextColorOfHighlightedLink();
         }

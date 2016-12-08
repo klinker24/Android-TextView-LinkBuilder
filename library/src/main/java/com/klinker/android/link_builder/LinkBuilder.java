@@ -234,8 +234,11 @@ public class LinkBuilder {
      * @param text  the spannable text to add the link to.
      */
     private void applyLink(Link link, Range range, Spannable text) {
-        TouchableSpan span = new TouchableSpan(context, link);
-        text.setSpan(span, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        TouchableSpan[] existingSpans = text.getSpans(range.start, range.end, TouchableSpan.class);
+        if (existingSpans.length == 0) {
+            TouchableSpan span = new TouchableSpan(context, link);
+            text.setSpan(span, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
     }
 
     /**
