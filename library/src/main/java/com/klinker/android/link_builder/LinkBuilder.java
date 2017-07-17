@@ -238,6 +238,21 @@ public class LinkBuilder {
         if (existingSpans.length == 0) {
             TouchableSpan span = new TouchableSpan(context, link);
             text.setSpan(span, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else {
+            boolean newSpanConsumesAllOld = true;
+            for (TouchableSpan span : existingSpans) {
+                int start = spannable.getSpanStart(span);
+                int end = spannable.getSpanEnd(span);
+                if (range.start > start || range.end < end) {
+                    newSpanConsumesAllOld = false;
+                    break;
+                }
+            }
+
+            if (newSpanConsumesAllOld) {
+                TouchableSpan span = new TouchableSpan(context, link);
+                text.setSpan(span, range.start, range.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
         }
     }
 
