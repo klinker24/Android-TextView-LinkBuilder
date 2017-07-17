@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 1.6.0:
+- Improvements around support for regular expression matching
+
 ### Version 1.5.2:
 - Don't default the text color of highlighted links to light blue
 
