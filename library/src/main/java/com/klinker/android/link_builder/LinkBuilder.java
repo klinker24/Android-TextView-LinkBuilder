@@ -293,7 +293,7 @@ public class LinkBuilder {
         Matcher m = pattern.matcher(text);
 
         while (m.find()) {
-            links.add(new Link(linkWithPattern).setText(m.group()));
+            links.add(new Link(linkWithPattern).setText(text.subSequence(m.start(), m.end()).toString()));
 
             // if we are only looking for the first occurrence of this pattern,
             // then quit now and don't look any further
