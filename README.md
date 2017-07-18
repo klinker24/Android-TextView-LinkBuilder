@@ -2,7 +2,7 @@
 
 ![Screenshot](preview.png)
 
-Insanely easy way to create clickable links within a `TextView`. 
+Insanely easy way to create clickable links within a `TextView`.
 
 While creating [Talon for Twitter](https://github.com/klinker24/Talon-for-Twitter), one of the most difficult things I encountered was creating these clickable links based on specific text. Luckily, I have made it easy for anyone to apply this type of style to their `TextView`'s.
 
@@ -32,7 +32,7 @@ This is the preferred way. Simply add:
 
 ```groovy
 dependencies {
-    compile 'com.klinkerapps:link_builder:1.6.0'
+    compile 'com.klinkerapps:link_builder:1.6.1'
 }
 ```
 

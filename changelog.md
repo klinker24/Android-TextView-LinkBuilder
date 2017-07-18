@@ -1,6 +1,9 @@
 ## Changelog
 
 ### Version 1.6.0:
+- Remove `Spannable` that would be consumed by other links so they are fully clickable
+
+### Version 1.6.0:
 - Improvements around support for regular expression matching
 
 ### Version 1.5.2:
@@ -48,7 +51,7 @@
 - Fix: if no matches are found when linking regular expressions, the text would not be shown at all
 - Convert line endings from CRLF to LF for git repository
 - Add changelog
-- Add release tags 
+- Add release tags
 
 ### Version 1.0.3:
 - Use the `TextView` to preform haptic feedback instead of `Vibrator` class.
