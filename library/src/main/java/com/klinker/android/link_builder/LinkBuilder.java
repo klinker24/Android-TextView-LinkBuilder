@@ -246,6 +246,8 @@ public class LinkBuilder {
                 if (range.start > start || range.end < end) {
                     newSpanConsumesAllOld = false;
                     break;
+                } else {
+                    text.removeSpan(span);
                 }
             }
 
