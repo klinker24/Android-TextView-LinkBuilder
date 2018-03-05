@@ -32,7 +32,7 @@ This is the preferred way. Simply add:
 
 ```groovy
 dependencies {
-    compile 'com.klinkerapps:link_builder:1.6.1'
+    compile 'com.klinkerapps:link_builder:2.0.0'
 }
 ```
 
@@ -78,7 +78,7 @@ LinkBuilder.on(demoText)
     .build(); // create the clickable links
 ```
 
-With version 1.1.0, you can create a `CharSequence` from a `String` instead of creating and applying the links directly to the `TextView`. Do not forget to set the movement method on your `TextView`'s after you have applied the `CharSequence`, or else the links will not be clickable.
+You can also create a `CharSequence` instead of creating and applying the links directly to the `TextView`. Do not forget to set the movement method on your `TextView`'s after you have applied the `CharSequence`, or else the links will not be clickable.
 
 ```java
 // find the text view. Used to create the link builder
@@ -105,6 +105,16 @@ If you would like to set the default text color for links without inputting it m
     <item name="defaultLinkColor">#222222</item>
     <item name="defaultTextColorOfHighlightedLink">#444444</item>
 </style>
+```
+
+## Kotlin Support
+
+The library is built on Kotlin, so you get some extension methods that you can use to apply the links to the `TextView`, instead of creating the builder.
+
+```kotlin
+val demo = findViewById<TextView>(R.id.demo_text)
+demo.applyLinks(link1, link2, ...)
+demo.applyLinks(listOfLinks)
 ```
 
 ## Usage with ListView.OnItemClickListener
