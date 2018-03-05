@@ -22,30 +22,30 @@ import java.util.regex.Pattern
 @Suppress("MemberVisibilityCanBePrivate")
 class Link {
 
-    internal var text: String? = null
-        private set
-    internal var prependedText: String? = null
-        private set
-    internal var appendedText: String? = null
-        private set
-    internal var pattern: Pattern? = null
-        private set
-    internal var textColor = 0
-        private set
-    internal var textColorOfHighlightedLink = 0
-        private set
-    internal var highlightAlpha = DEFAULT_ALPHA
-        private set
-    internal var underlined = true
-        private set
-    internal var bold = false
-        private set
-    internal var typeface: Typeface? = null
-        private set
-    internal var clickListener: OnClickListener? = null
-        private set
-    internal var longClickListener: OnLongClickListener? = null
-        private set
+    var text: String? = null
+        set(value) { setText(value!!) }
+    var prependedText: String? = null
+        set(value) { setPrependedText(value!!) }
+    var appendedText: String? = null
+        set(value) { setAppendedText(value!!) }
+    var pattern: Pattern? = null
+        set(value) { setPattern(value!!) }
+    var textColor = 0
+        set(value) { setTextColor(value) }
+    var textColorOfHighlightedLink = 0
+        set(value) { setTextColorOfHighlightedLink(value) }
+    var highlightAlpha = DEFAULT_ALPHA
+        set(value) { setHighlightAlpha(value) }
+    var underlined = true
+        set(value) { setUnderlined(value) }
+    var bold = false
+        set(value) { setBold(value) }
+    var typeface: Typeface? = null
+        set(value) { setTypeface(value!!) }
+    var clickListener: OnClickListener? = null
+        set(value) { setOnClickListener(value!!) }
+    var longClickListener: OnLongClickListener? = null
+        set(value) { setOnLongClickListener(value!!) }
 
     /**
      * Copy Constructor.
@@ -136,6 +136,16 @@ class Link {
         return this
     }
 
+    fun setOnClickListener(listener: (String) -> Unit): Link {
+        this.clickListener = object : OnClickListener {
+            override fun onClick(clickedText: String) {
+                listener(clickedText)
+            }
+        }
+
+        return this
+    }
+
     /**
      * Specify what happens with a long click.
      * @param longClickListener action for the long click.
@@ -143,6 +153,16 @@ class Link {
      */
     fun setOnLongClickListener(longClickListener: OnLongClickListener): Link {
         this.longClickListener = longClickListener
+        return this
+    }
+
+    fun setOnLongClickListener(listener: (String) -> Unit): Link {
+        this.longClickListener = object : OnLongClickListener {
+            override fun onLongClick(clickedText: String) {
+                listener(clickedText)
+            }
+        }
+
         return this
     }
 
@@ -209,6 +229,7 @@ class Link {
     /**
      * Interface to manage the single clicks.
      */
+    @FunctionalInterface
     interface OnClickListener {
         fun onClick(clickedText: String)
     }
@@ -216,6 +237,7 @@ class Link {
     /**
      * Interface to manage the long clicks.
      */
+    @FunctionalInterface
     interface OnLongClickListener {
         fun onLongClick(clickedText: String)
     }

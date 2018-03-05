@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 2.0.1:
+- Kotlin cleanup
+
 ### Version 2.0.0:
 - Built on Kotlin
 - Extension method support for `TextView#applyLinks` to avoid boilerplate of creating the `LinkBuilder`

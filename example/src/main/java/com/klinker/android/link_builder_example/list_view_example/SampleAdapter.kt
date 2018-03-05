@@ -36,18 +36,8 @@ class SampleAdapter(private val mContext: Context) : BaseAdapter() {
         val textView = convertView as LinkConsumableTextView?
         textView!!.text = String.format(TEXT, position)
 
-        // Add 2 Links
-        val link1 = Link(LINK1).setOnClickListener(object : Link.OnClickListener {
-            override fun onClick(clickedText: String) {
-                Log.d(TAG, LINK1)
-            }
-        })
-
-        val link2 = Link(LINK2).setOnClickListener(object : Link.OnClickListener {
-            override fun onClick(clickedText: String) {
-                Log.d(TAG, LINK2)
-            }
-        })
+        val link1 = Link(LINK1).setOnClickListener { Log.d(TAG, LINK1) }
+        val link2 = Link(LINK2).setOnClickListener { Log.d(TAG, LINK2) }
 
         textView.applyLinks(link1, link2)
         return convertView
@@ -60,5 +50,6 @@ class SampleAdapter(private val mContext: Context) : BaseAdapter() {
         private const val LINK1 = "First link"
         private const val LINK2 = "Second link"
         private const val TEXT = "This is item %d.  $LINK1  $LINK2"
+
     }
 }

@@ -47,65 +47,41 @@ class MainActivity : AppCompatActivity() {
 
     private fun getLinks(): List<Link> {
         val github = Link("TextView-LinkBuilder")
-        github.setTypeface(Typeface.DEFAULT_BOLD)
-                .setOnClickListener(object : Link.OnClickListener {
-                    override fun onClick(clickedText: String) {
-                        openLink(GITHUB_LINK)
-                    }
-                })
+                .setTypeface(Typeface.DEFAULT_BOLD)
+                .setOnClickListener { openLink(GITHUB_LINK) }
 
         val mentions = Link(Pattern.compile("@\\w{1,15}"))
-        mentions.setTextColor(Color.parseColor("#00BCD4"))
-        mentions.setHighlightAlpha(.4f)
-        mentions.setOnClickListener(object : Link.OnClickListener {
-            override fun onClick(clickedText: String) {
-                openLink(TWITTER_PROFILE + clickedText.replace("@", ""))
-            }
-        })
+                .setTextColor(Color.parseColor("#00BCD4"))
+                .setHighlightAlpha(.4f)
+                .setOnClickListener { clickedText ->
+                    openLink(TWITTER_PROFILE + clickedText.replace("@", ""))
+                }
 
         val numbers = Link(Pattern.compile("[0-9]+"))
-        numbers.setTextColor(Color.parseColor("#FF9800"))
-        numbers.setOnClickListener(object : Link.OnClickListener {
-            override fun onClick(clickedText: String) {
-                showToast("Clicked: $clickedText")
-            }
-        })
+                .setTextColor(Color.parseColor("#FF9800"))
+                .setOnClickListener { showToast("Clicked: $it") }
 
         val longClickHere = Link("here")
-        longClickHere.setTextColor(Color.parseColor("#259B24"))
-        longClickHere.setOnLongClickListener(object : Link.OnLongClickListener {
-            override fun onLongClick(clickedText: String) {
-                showToast("You long clicked. Nice job.")
-            }
-        })
+                .setTextColor(Color.parseColor("#259B24"))
+                .setOnLongClickListener { showToast("You long clicked. Nice job.") }
 
-        val yes = Link("Yes")
-        yes.setUnderlined(true)
-        yes.setTextColor(Color.parseColor("#FFEB3B"))
+        val yes = Link("Yes").setUnderlined(true)
+                .setTextColor(Color.parseColor("#FFEB3B"))
 
-        val no = Link("No")
-        no.setUnderlined(false)
-        no.setTextColor(Color.parseColor("#FFEB3B"))
+        val no = Link("No").setUnderlined(false)
+                .setTextColor(Color.parseColor("#FFEB3B"))
 
-        val bold = Link("bold")
-        bold.setBold(true)
-        bold.setTextColor(Color.parseColor("#FF0000"))
+        val bold = Link("bold").setBold(true)
+                .setTextColor(Color.parseColor("#FF0000"))
 
-        val prepend = Link("prepended")
-        prepend.setPrependedText("(!)")
-
-        val appended = Link("appended")
-        appended.setAppendedText("(!)")
+        val prepend = Link("prepended").setPrependedText("(!)")
+        val appended = Link("appended").setAppendedText("(!)")
 
         val playStore = Link("Play Store")
-        playStore.setTextColor(Color.parseColor("#FF9800"))
-        playStore.setTextColorOfHighlightedLink(Color.parseColor("#FF6600"))
-        playStore.setHighlightAlpha(0f)
-        playStore.setOnClickListener(object : Link.OnClickListener {
-            override fun onClick(clickedText: String) {
-                openLink(PLAY_STORE)
-            }
-        })
+                .setTextColor(Color.parseColor("#FF9800"))
+                .setTextColorOfHighlightedLink(Color.parseColor("#FF6600"))
+                .setHighlightAlpha(0f)
+                .setOnClickListener { openLink(PLAY_STORE) }
 
         return listOf(github, mentions, numbers, longClickHere, yes, no, bold, prepend, appended, playStore)
     }

@@ -31,7 +31,6 @@ class HtmlLinkExampleActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.setTitle(R.string.app_name)
 
-
         val demo1 = findViewById<View>(R.id.demo1) as TextView
         demo1.text = Html.fromHtml(TEXT)
         demo1.applyLinks(getLinks())
@@ -43,22 +42,14 @@ class HtmlLinkExampleActivity : AppCompatActivity() {
 
     private fun getLinks(): List<Link> {
         val google = Link("www.google.com")
-        google.setTextColor(Color.parseColor("#00BCD4"))
-        google.setHighlightAlpha(.4f)
-        google.setOnClickListener(object : Link.OnClickListener {
-            override fun onClick(clickedText: String) {
-                showToast("clicked: $clickedText")
-            }
-        })
+                .setTextColor(Color.parseColor("#00BCD4"))
+                .setHighlightAlpha(.4f)
+                .setOnClickListener { showToast("clicked: $it") }
 
         val exampleText = Link("this")
-        exampleText.setTextColor(Color.parseColor("#00BCD4"))
-        exampleText.setHighlightAlpha(.4f)
-        exampleText.setOnClickListener(object : Link.OnClickListener {
-            override fun onClick(clickedText: String) {
-                showToast("clicked the example text")
-            }
-        })
+                .setTextColor(Color.parseColor("#00BCD4"))
+                .setHighlightAlpha(.4f)
+                .setOnClickListener { showToast("clicked the example text") }
 
         return listOf(google, exampleText)
     }
@@ -68,7 +59,8 @@ class HtmlLinkExampleActivity : AppCompatActivity() {
     }
 
     companion object {
-
-        private const val TEXT = "Here is an example link <a href=\"www.google.com\">www.google.com</a>." + "To show it alongside other LinkBuilder functionality, lets highlight this."
+        private const val TEXT =
+                "Here is an example link <a href=\"www.google.com\">www.google.com</a>." +
+                "To show it alongside other LinkBuilder functionality, lets highlight this."
     }
 }
