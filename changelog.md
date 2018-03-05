@@ -1,5 +1,9 @@
 ## Changelog
 
+### Version 2.0.0:
+- Built on Kotlin
+- Extension method support for `TextView#applyLinks` to avoid boilerplate of creating the `LinkBuilder`
+
 ### Version 1.6.0:
 - Remove `Spannable` that would be consumed by other links so they are fully clickable
 
