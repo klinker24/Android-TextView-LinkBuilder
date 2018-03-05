@@ -23,29 +23,17 @@ import java.util.regex.Pattern
 class Link {
 
     var text: String? = null
-        set(value) { setText(value!!) }
-    var prependedText: String? = null
-        set(value) { setPrependedText(value!!) }
-    var appendedText: String? = null
-        set(value) { setAppendedText(value!!) }
     var pattern: Pattern? = null
-        set(value) { setPattern(value!!) }
+    var prependedText: String? = null
+    var appendedText: String? = null
     var textColor = 0
-        set(value) { setTextColor(value) }
     var textColorOfHighlightedLink = 0
-        set(value) { setTextColorOfHighlightedLink(value) }
     var highlightAlpha = DEFAULT_ALPHA
-        set(value) { setHighlightAlpha(value) }
     var underlined = true
-        set(value) { setUnderlined(value) }
     var bold = false
-        set(value) { setBold(value) }
     var typeface: Typeface? = null
-        set(value) { setTypeface(value!!) }
     var clickListener: OnClickListener? = null
-        set(value) { setOnClickListener(value!!) }
     var longClickListener: OnLongClickListener? = null
-        set(value) { setOnLongClickListener(value!!) }
 
     /**
      * Copy Constructor.
@@ -96,6 +84,17 @@ class Link {
     }
 
     /**
+     * Specify the pattern you want to match.
+     * @param pattern to match.
+     * @return the current link object.
+     */
+    fun setPattern(pattern: Pattern): Link {
+        this.pattern = pattern
+        this.text = null
+        return this
+    }
+
+    /**
      * This text will be added *before* any matches.
      * @param text to place before the link's text.
      * @return the current link object.
@@ -112,17 +111,6 @@ class Link {
      */
     fun setAppendedText(text: String): Link {
         this.appendedText = text
-        return this
-    }
-
-    /**
-     * Specify the pattern you want to match.
-     * @param pattern to match.
-     * @return the current link object.
-     */
-    fun setPattern(pattern: Pattern): Link {
-        this.pattern = pattern
-        this.text = null
         return this
     }
 
