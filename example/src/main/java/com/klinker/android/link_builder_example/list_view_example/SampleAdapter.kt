@@ -10,6 +10,7 @@ import android.widget.BaseAdapter
 import com.klinker.android.link_builder.Link
 import com.klinker.android.link_builder.LinkBuilder
 import com.klinker.android.link_builder.LinkConsumableTextView
+import com.klinker.android.link_builder.applyLinks
 import com.klinker.android.link_builder_example.R
 
 class SampleAdapter(private val mContext: Context) : BaseAdapter() {
@@ -48,10 +49,7 @@ class SampleAdapter(private val mContext: Context) : BaseAdapter() {
             }
         })
 
-        LinkBuilder.on(textView)
-                .addLinks(listOf(link1, link2))
-                .build()
-
+        textView.applyLinks(link1, link2)
         return convertView
     }
 

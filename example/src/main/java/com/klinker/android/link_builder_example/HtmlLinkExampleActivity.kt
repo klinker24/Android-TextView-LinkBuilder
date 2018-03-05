@@ -15,6 +15,7 @@ import android.widget.Toast
 
 import com.klinker.android.link_builder.Link
 import com.klinker.android.link_builder.LinkBuilder
+import com.klinker.android.link_builder.applyLinks
 
 import java.util.ArrayList
 import java.util.regex.Pattern
@@ -33,11 +34,11 @@ class HtmlLinkExampleActivity : AppCompatActivity() {
 
         val demo1 = findViewById<View>(R.id.demo1) as TextView
         demo1.text = Html.fromHtml(TEXT)
-        LinkBuilder.on(demo1).addLinks(getLinks()).build()
+        demo1.applyLinks(getLinks())
 
         val demo2 = findViewById<View>(R.id.demo2) as TextView
         demo2.text = Html.fromHtml(TEXT.replace("</?a[^>]*>".toRegex(), ""))
-        LinkBuilder.on(demo2).addLinks(getLinks()).build()
+        demo2.applyLinks(getLinks())
     }
 
     private fun getLinks(): List<Link> {

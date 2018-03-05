@@ -30,15 +30,28 @@
 
         </activity>
 
-        <activity
-            android:name=".list_view_example.ListActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme" />
 
-        <activity
-            android:name=".HtmlLinkExampleActivity"
+        <activity android:name="com.klinker.android.link_builder_example.list_view_example.ListActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+
+        </activity>
+
+        <activity android:name="com.klinker.android.link_builder_example.HtmlLinkExampleActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+
+        </activity>
 
     </application>
 

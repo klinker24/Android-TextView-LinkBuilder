@@ -26,7 +26,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 import com.klinker.android.link_builder.Link
-import com.klinker.android.link_builder.LinkBuilder
+import com.klinker.android.link_builder.applyLinks
 
 import java.util.regex.Pattern
 
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.app_name)
 
         val demoText = findViewById<View>(R.id.test_text) as TextView
-        LinkBuilder.on(demoText).addLinks(getLinks()).build()
+        demoText.applyLinks(getLinks())
     }
 
     private fun getLinks(): List<Link> {
