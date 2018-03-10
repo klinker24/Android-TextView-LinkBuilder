@@ -22,18 +22,18 @@ import java.util.regex.Pattern
 @Suppress("MemberVisibilityCanBePrivate")
 class Link {
 
-    var text: String? = null
-    var pattern: Pattern? = null
-    var prependedText: String? = null
-    var appendedText: String? = null
-    var textColor = 0
-    var textColorOfHighlightedLink = 0
-    var highlightAlpha = DEFAULT_ALPHA
-    var underlined = true
-    var bold = false
-    var typeface: Typeface? = null
-    var clickListener: OnClickListener? = null
-    var longClickListener: OnLongClickListener? = null
+    @JvmField var text: String? = null
+    @JvmField var pattern: Pattern? = null
+    @JvmField var prependedText: String? = null
+    @JvmField var appendedText: String? = null
+    @JvmField var textColor = 0
+    @JvmField var textColorOfHighlightedLink = 0
+    @JvmField var highlightAlpha = DEFAULT_ALPHA
+    @JvmField var underlined = true
+    @JvmField var bold = false
+    @JvmField var typeface: Typeface? = null
+    @JvmField var clickListener: OnClickListener? = null
+    @JvmField var longClickListener: OnLongClickListener? = null
 
     /**
      * Copy Constructor.

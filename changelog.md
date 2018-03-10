@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 2.0.3:
+- Improvements for Java interop support
+
 ### Version 2.0.2:
 - Kotlin cleanup
 

@@ -303,13 +303,13 @@ class LinkBuilder {
         private const val TYPE_TEXT = 1
         private const val TYPE_TEXT_VIEW = 2
 
-        fun from(context: Context, text: String): LinkBuilder {
+        @JvmStatic fun from(context: Context, text: String): LinkBuilder {
             return LinkBuilder(TYPE_TEXT)
                     .setContext(context)
                     .setText(text)
         }
 
-        fun on(tv: TextView): LinkBuilder {
+        @JvmStatic fun on(tv: TextView): LinkBuilder {
             return LinkBuilder(TYPE_TEXT_VIEW)
                     .setContext(tv.context)
                     .setTextView(tv)
