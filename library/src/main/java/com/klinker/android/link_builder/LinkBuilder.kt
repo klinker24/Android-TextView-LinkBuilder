@@ -303,7 +303,7 @@ class LinkBuilder {
         private const val TYPE_TEXT = 1
         private const val TYPE_TEXT_VIEW = 2
 
-        @JvmStatic fun from(context: Context, text: String): LinkBuilder {
+        @JvmStatic fun from(context: Context, text: CharSequence): LinkBuilder {
             return LinkBuilder(TYPE_TEXT)
                     .setContext(context)
                     .setText(text)
