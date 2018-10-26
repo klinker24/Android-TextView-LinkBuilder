@@ -23,6 +23,7 @@ import android.text.method.MovementMethod
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.widget.TextView
+import java.lang.IndexOutOfBoundsException
 
 class TouchableMovementMethod : LinkMovementMethod() {
 
@@ -115,7 +116,13 @@ class TouchableMovementMethod : LinkMovementMethod() {
 
         val layout = widget.layout
         val line = layout.getLineForVertical(y)
-        val off = layout.getOffsetForHorizontal(line, x.toFloat())
+
+        val off = try {
+            layout.getOffsetForHorizontal(line, x.toFloat())
+        } catch (e: IndexOutOfBoundsException) {
+            return null
+        }
+
         val end = layout.getLineEnd(line)
 
         // offset seems like it can be one off in some cases

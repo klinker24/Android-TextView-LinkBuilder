@@ -32,7 +32,7 @@ This is the preferred way. Simply add:
 
 ```groovy
 dependencies {
-    compile 'com.klinkerapps:link_builder:2.0.4'
+    compile 'com.klinkerapps:link_builder:2.0.5'
 }
 ```
 

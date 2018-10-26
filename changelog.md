@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 2.0.5:
+- Crash fix
+
 ### Version 2.0.4:
 - Support `CharSequence` when building links
 
