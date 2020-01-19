@@ -44,7 +44,7 @@ Download the source code and import it as a library project in Eclipse. The proj
 
 ## Example Usage
 
-Functionality can be found in the example's [MainActivity](https://github.com/klinker24/Android-TextView-LinkBuilder/blob/master/example/src/main/java/com/klinker/android/link_builder_example/MainActivity.java)
+Functionality can be found in the Kotlin example's [MainActivity](https://github.com/klinker24/Android-TextView-LinkBuilder/blob/master/example/src/main/java/com/klinker/android/link_builder_example/MainActivity.kt). For Java check [JavaMainActivity](https://github.com/klinker24/Android-TextView-LinkBuilder/blob/master/example/src/main/java/com/klinker/android/link_builder_example/JavaMainActivity.java).
 
 For a list of regular expressions that I use in Talon, you can go [here](https://github.com/klinker24/Talon-for-Twitter/blob/master/app/src/main/java/com/klinker/android/twitter/utils/text/Regex.java)
 
